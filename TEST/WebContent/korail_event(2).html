@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event Page</title>
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+<link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister' rel='stylesheet' type='text/css'>
+<style type="text/css">
+*{
+	margin : 0; padding : 0;
+}
+
+body {
+	height : 100%;
+}
+h1 {
+	font-family: "Love Ya Like A Sister", "돋움";
+}
+h2 {
+	font-family: fantasy;
+}
+#whole1 {
+	width : 90%;
+	margin : 20px auto;
+	display: flex;
+	height : 50%;
+}
+
+#whole2 {
+	height : 50%;
+}
+
+#div1 {
+	flex-basis: 40%;
+	margin: 0 auto;
+}
+
+#div2 {
+	flex-basis: 40%;
+	margin: 0 auto;
+}
+
+#div3 {
+	position : relative;
+	flex-basis: 20%;
+	margin : 0 auto;
+	padding : 0px;
+}
+
+#div4 {
+	height : 100%;
+	width : 90%;
+	margin : 0 auto;
+}
+table {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+h1 {
+	font-size: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.tbl-header{
+	background-color: rgba(255, 255, 255, 0.3);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.tbl-content {
+	height: 200px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tbl-content2{
+	height: 100%;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.tbl-footer {
+	background-color: rgba(255, 255, 255, 0.3);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+th {
+	padding: 5px 5px;
+	text-align: left;
+	font-weight: 500;
+	font-size: 12px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+td {
+	padding: 5px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 12px;
+	color: #fff;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+	text-align: center;
+}
+
+/* demo styles */
+@import
+	url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+body {
+	background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+	background: linear-gradient(to right, #25c481, #25b7c4);
+	font-family: 'Roboto', sans-serif;
+}
+.updatebutton, .deletebutton, .updatebutton2, .deletebutton2 {
+	border-radius: 3px;
+	background: transparent;
+	border : 1px solid white;
+	color : white;
+	width : 3em;
+	margin-right: 2px;
+}
+
+.updatebutton:hover, .deletebutton:hover, .updatebutton2:hover, .deletebutton2:hover{
+	background : rgba(255,255,255,0.1);
+	border-radius : 3px;
+	outline: 1px solid rgba(255,255,255,0.1);
+}
+
+#person_plus, #item_plus, #submit{
+	border-radius: 3px;
+	background: transparent;
+	border : 1px solid white;
+	color : white;
+	width : 6em;
+	margin : 0 auto;
+}
+
+#person_plus:hover, #item_plus:hover, #submit:hover{
+	background : rgba(255,255,255,0.1);
+	border-radius : 3px;
+	outline: 1px solid rgba(255,255,255,0.1);
+}
+
+
+
+
+
+input[type=text] {
+	background : transparent;
+	border-radius : 3px;
+	border : 1px solid white;
+	width : 10em;
+	outline: none;
+	color : white;
+}
+
+input[type=text]:hover {
+	background : rgba(255,255,255,0.1);
+	border-radius : 3px;
+	outline: 1px solid rgba(255,255,255,0.1);
+}
+
+input[type=text]:focus {
+	border-radius : 3px;
+}
+
+
+.shotButton {
+	padding: 10px;
+	clear: left;
+	text-align: center;
+	font-size: 10px;
+	font-family: arial;
+}
+
+
+
+.hoonsung {
+	padding: 10px;
+	clear: left;
+	text-align: center;
+	font-size: 10px;
+	font-family: arial;
+	color: #fff;
+}
+
+.hoonsung i {
+	font-style: normal;
+	color: #F50057;
+	font-size: 14px;
+	position: relative;
+	top: 2px;
+}
+
+.hoonsung a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.hoonsung a:hover {
+	text-decoration: underline;
+}
+
+/* for custom scrollbar for webkit browser*/
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	var arr = [];
+	var arr2 =[];
+	$(window).on(
+			"load resize ",
+			function() {
+				var scrollWidth = $('.tbl-content').width()
+						- $('.tbl-content table').width();
+				$('.tbl-header').css({
+					'padding-right' : scrollWidth
+				});
+			}).resize();
+
+	$(function(){
+		$("#whole2").height($(window).height()/3);
+	});
+	var personNum = 0;
+	var itemNum = 0;
+	function item_plus_click() {
+
+		if ($("#item").val() == "") {
+			alert("한 글자 이상 입력해주세요.")
+		} else {
+			
+			itemNum++;
+			var table_tr = document.createElement("tr");
+			var table_td = document.createElement("td");
+			table_td.setAttribute('colspan', '2');
+			var table_td2 = document.createElement("td");
+			var table_td3 = document.createElement("td");
+			var button = document.createElement("input");
+			button.setAttribute('type', 'button');
+			button.setAttribute('value', '삭제');
+			button.setAttribute('class', 'deletebutton2');
+			
+			var button2 = document.createElement("input");
+			button2.setAttribute('type', 'button');
+			button2.setAttribute('value', '수정');
+			button2.setAttribute('class', 'updatebutton2');
+			
+			var itemnum = document.createElement("p");
+			itemnum.setAttribute('class', 'index');
+			itemnum.setAttribute('value', itemNum);
+			
+			var itemname = document.createElement("p");
+			itemname.setAttribute('class','itemNameTxt')
+			
+			var textnode = document.createTextNode(document.getElementById("item").value);
+			
+			
+			table_td3.appendChild(itemnum);
+			table_tr.appendChild(table_td3);
+			itemname.appendChild(textnode);
+			table_td.appendChild(itemname);
+			table_tr.appendChild(table_td);
+			table_td2.appendChild(button2);
+			table_td2.appendChild(button);
+			table_tr.appendChild(table_td2);
+			
+			document.getElementById("tbody2").appendChild(table_tr);
+
+			$("#item").val("");
+			for(var a=0; a<itemNum; a++){
+				$(".index").eq(a).text(a+1); 	
+			}
+
+		}
+	}
+	
+	$(document).on("click",".deletebutton2",function(){
+		$(this).parent().parent().remove();
+		itemNum--;
+		for(var a=0; a<itemNum; a++){
+			$(".index").eq(a).text(a+1); 	
+		}
+	})
+	
+	$()
+	$(document).on("click",".updatebutton2",function(){
+		
+		if($(this).val() == '확인'){
+			var emp = $(this).parent().parent().children().find('.itemNameTxt2').val();
+			if(emp==''){
+				alert('한 글자 이상 입력해주세요.')
+			} else {
+				$(this).parent().parent().children().find('.itemNameTxt2').remove();
+				var itemname = document.createElement("p");
+				itemname.setAttribute('class','itemNameTxt');
+				var textnode = document.createTextNode(emp);
+				itemname.appendChild(textnode);
+				$(this).parent().parent().children()[1].appendChild(itemname);
+				$(this).val("수정");
+			}
+		}else {
+			var inputtext1 = document.createElement("input");
+			inputtext1.setAttribute('class','itemNameTxt2');
+			inputtext1.setAttribute('type','text');
+			inputtext1.setAttribute('value',$(this).parent().parent().children().find('.itemNameTxt').html())
+			//inputtext1.setAttribute('onkeypress',if( event.keyCode==13 ){item_plus_click();});
+			$(this).parent().parent().children().find('.itemNameTxt').remove();
+			$(this).parent().parent().children()[1].appendChild(inputtext1);
+			$(this).val("확인");
+			$(this).parent().parent().children().find('.itemNameTxt2').focus();
+			
+		}
+	})
+	
+	function person_plus_click(){
+		
+		if($("#person").val() ==""){
+			alert("한 글자 이상 입력해주세요.")
+		} else {
+			personNum++;
+			
+			var table_tr = document.createElement("tr");
+			var table_td = document.createElement("td");
+			table_td.setAttribute('colspan','2');
+			var table_td2 = document.createElement("td");
+			var table_td3 = document.createElement("td");
+			var button = document.createElement("input");
+			button.setAttribute('type','button');
+			button.setAttribute('value','삭제');
+			button.setAttribute('class','deletebutton');
+			var button2 = document.createElement("input");
+			button2.setAttribute('type', 'button');
+			button2.setAttribute('value', '수정');
+			button2.setAttribute('class', 'updatebutton');
+			var personnum = document.createElement("p");
+			personnum.setAttribute('class', 'index2');
+			personnum.setAttribute('value', personNum);
+			
+			var personname = document.createElement("p");
+			personname.setAttribute('class','personNameTxt')
+
+			var textnode = document.createTextNode(document.getElementById("person").value);
+			
+			
+			table_td3.appendChild(personnum);
+			table_tr.appendChild(table_td3);
+			personname.appendChild(textnode);
+			table_td.appendChild(personname);
+			table_tr.appendChild(table_td);
+			table_td2.appendChild(button2);
+			table_td2.appendChild(button);
+			table_tr.appendChild(table_td2);
+			document.getElementById("tbody").appendChild(table_tr);		
+			$("#person").val("");
+			
+			for(var a=0; a<personNum; a++){
+				$(".index2").eq(a).text(a+1); 	
+			}
+		}
+	}
+	$(document).on("click",".deletebutton",function(){
+		$(this).parent().parent().remove();
+		personNum--;
+		for(var a=0; a<personNum; a++){
+			$(".index2").eq(a).text(a+1); 	
+		}
+	})
+	$(document).on("click",".updatebutton",function(){
+		
+		if($(this).val() == '확인'){
+			var emp = $(this).parent().parent().children().find('.personNameTxt2').val();
+			if(emp==''){
+				alert('한 글자 이상 입력해주세요.')
+			}else{
+				$(this).parent().parent().children().find('.personNameTxt2').remove();
+				var personname = document.createElement("p");
+				personname.setAttribute('class','personNameTxt');
+				var textnode = document.createTextNode(emp);
+				personname.appendChild(textnode);
+				$(this).parent().parent().children()[1].appendChild(personname);
+				$(this).val("수정");
+			}
+		}else {
+			var inputtext1 = document.createElement("input");
+			inputtext1.setAttribute('type','text');
+			inputtext1.setAttribute('class','personNameTxt2');
+			inputtext1.setAttribute('value',$(this).parent().parent().children().find('.personNameTxt').html());
+			$(this).parent().parent().children().find('.personNameTxt').remove();
+			$(this).parent().parent().children()[1].appendChild(inputtext1);
+			$(this).val("확인");
+		}
+		
+
+	})
+		function callback_1(){
+		arr = [];
+		arr2 = [];
+	}
+	function callback_2(){
+		var arr2 = arr.sort(function(){
+			return 0.5- Math.random();
+		})
+	}	
+	
+	function result(){
+		arr = [];
+		var flag = 0;
+		
+		for(var checkbutton=0; checkbutton<personNum; checkbutton++){
+			if($(".updatebutton").eq(checkbutton).val()=="확인"){
+				flag = 1;
+				break;
+			}
+		}
+		
+		for(var checkbutton2=0; checkbutton2<itemNum; checkbutton2++){
+			if($(".updatebutton2").eq(checkbutton2).val()=="확인"){
+				flag = 1;
+				break;
+			}
+		}
+		
+		if(personNum<2){
+			alert("2명 이상 뽑아 주세요.");
+		} else if(itemNum<1) {
+			alert("상품을 1개이상 만들어 주세요.")
+		} else if(flag == 1) {
+			alert("수정을 완료해주세요.")
+		} else {
+
+			var cell = document.getElementById("tbody3"); 
+			
+			while ( cell.hasChildNodes() ) 
+			{
+				cell.removeChild( cell.firstChild ); 
+			}
+			
+			for(var cnt=0; cnt<personNum; cnt++){	
+				arr.push(document.getElementById("tbody").children[cnt].children[1].children[0].innerHTML);
+			}
+			var max = 0;
+			
+			callback_2();
+			
+			for(var cnt2=0; cnt2<personNum; cnt2++){
+				var table_tr2 = document.createElement("tr");
+				var table_td2_1 = document.createElement("td");
+				var textnode2 = document.createTextNode(arr[cnt2]);
+				var table_td2_2 = document.createElement("td");
+				var textnode3 = document.createTextNode(cnt2+1);
+				var table_td2_3 = document.createElement("td");
+				if(cnt2 >= itemNum){
+					var textnode4 = document.createTextNode("꽝");
+				} else {
+					var tempt = document.getElementById("tbody2").children[cnt2].children[1].children[0].innerHTML;
+					var textnode4 = document.createTextNode(tempt);
+				}
+				
+				table_td2_1.appendChild(textnode2);
+				table_td2_2.appendChild(textnode3);
+				table_td2_3.appendChild(textnode4);
+				table_tr2.appendChild(table_td2_2);
+				table_tr2.appendChild(table_td2_3);
+				table_tr2.appendChild(table_td2_1);
+				document.getElementById("tbody3").appendChild(table_tr2);
+			}
+		}
+	}
+
+	
+</script>
+</head>
+<body>
+	<section id="whole1">
+		<div id="div1">
+			<h1>참가자</h1>
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>숫자</th>
+							<th>ID</th>
+							<th>BUTTON</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<tbody id="tbody">
+					</tbody>
+					<tfoot>
+				</table>
+			</div>
+			<div class="tbl-footer">
+				<table cellpadding="0" cellspacing="0" border="0">
+					
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td><p>아이디 추가</p></td>
+							<td><input type="text" id="person" style="width: 60%;"
+							onkeypress="if( event.keyCode==13 ){person_plus_click();}"></td>
+							<td><input type="button" id="person_plus"
+								onclick="person_plus_click();" value="추가"></td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		<div id="div3">
+			<div>
+				<div class="hoonsung">
+					<h1>LOSTARK</h1>
+					<h2>K O R A I L<br>E V E N T<br><br>알파벳을 모아라!</h2>
+				</div>
+			</div>
+			<div style = "position : absolute; bottom: 0px; margin : 5px auto; width : 100%;">
+				<div class="hoonsung">Made By<br>ILL GANG</div>
+					<div style ="width : 6em; margin : 0 auto; text-align: center;">
+					<input type="button" id="submit" value = "뽑기" onclick="result();">
+				</div>
+			</div>
+		</div>
+		<div id="div2">
+			<h1>상품 목록</h1>
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>등수</th>
+							<th>상품 품목</th>
+							<th>BUTTON</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<tbody id="tbody2">
+					</tbody>
+					<tfoot>
+				</table>
+			</div>
+			<div class="tbl-footer">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td><p>상품 추가</p></td>
+							<td><input type="text" id="item" style="width: 60%;"
+							onkeypress="if( event.keyCode==13 ){item_plus_click();}"></td>
+							<td><input type="button" id="item_plus" onclick="item_plus_click();" value="추가"></td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</section>
+	<section id="whole2">
+		<div id="div4">
+			<h1>뽑기판</h1>
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>순위</th>
+							<th>상품</th>
+							<th>ID</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content2">
+				<table cellpadding="0" cellspacing="0" border="0">
+				<colgroup>
+						<col width="25%">
+						<col width="calc(50% - 6px)">
+						<col width="25%">
+					</colgroup>
+					<tbody id="tbody3">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

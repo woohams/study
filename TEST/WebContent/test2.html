@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+CSS isn't organized very well
+*/
+/* Text */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300i,400&display=swap");
+/* Numerals */
+@import url("https://fonts.googleapis.com/css?family=Chathura:800&display=swap");
+/* Date */
+@import url("https://fonts.googleapis.com/css?family=Krona+One&display=swap");
+/* Rolex */
+@import url("https://fonts.googleapis.com/css?family=Rhodium+Libre&display=swap");
+/* Swiss Made */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600&display=swap");
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+/* Not sure where this is used */
+i:before, i:after, .rolex:before, .rolex:after, .rolex .crown:before, .rolex .crown:after, .bezel .bezel-gradient:after, .bezel .bezel-gradient:before, .bezel-decor:before, .bezel-decor:after, .crystal:before, .crystal:after, .face:after, .face .sec:nth-of-type(1):after, .face .sec:nth-of-type(14):after, .content-upper .logo:before, .content-upper .logo:after, .content-upper .logo .logo-left:before,
+.content-upper .logo .logo-right:before, .marker-triangle:before, .marker-triangle:after, .marker-square:before, .marker-square:after, .date:after, .hand-sec:after, .hand-sec:before, .hand-min:before, .hand-min span:after, .hand-hour:after, .hand-hour:before, .hand-hour span:before, .hand-hour span:after, .hand-hour span .hour-decor:after, .hand-hour span .hour-decor:before {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+/* Circle marker details */
+.bezel-decor:after, .markers-circle:before, .markers-circle:after {
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+  background: #fff;
+  box-shadow: inset 1px 1px 1px 0 #666, inset 2px 2px 7px 0 #aaa, 1px 1px 1px 0 #222;
+  border: 2px solid #ccc;
+}
+
+.rolex, .rolex .band, .bezel .bezel-gradient, .bez-num, .bez-num li, .crystal, .crystal:before, .crystal:after, .face, .face:after, .marker-square, .hand-sec, .hand-min, .hand-hour {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+/* .bez, .sec */
+i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+i:before, i:after {
+  height: inherit;
+  width: inherit;
+  border-radius: inherit;
+  -webkit-transform: rotateZ(calc(90deg));
+          transform: rotateZ(calc(90deg));
+}
+
+/* ***********************
+
+Start main code
+
+*********************** */
+/* Band and crown */
+.rolex {
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  /* Left and right container */
+}
+.rolex:before, .rolex:after {
+  border-top: 210px solid transparent;
+  border-bottom: 210px solid transparent;
+  height: 500px;
+  z-index: -1;
+  top: -35px;
+}
+.rolex:before {
+  border-right: 73px solid #e6e6e6;
+  left: 5px;
+  box-shadow: 30px 0 0 #e6e6e6;
+}
+.rolex:after {
+  border-left: 73px solid #e6e6e6;
+  right: 5px;
+  box-shadow: -30px 0 0 #e6e6e6;
+}
+.rolex .band {
+  position: absolute;
+  height: 508px;
+  width: 82px;
+  background: #e6e6e6;
+  box-shadow: -74px 0 0 -14px #e6e6e6, 74px 0 0 -14px #e6e6e6;
+}
+.rolex .crown {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: -30px;
+  width: 30px;
+  height: 76px;
+  background: #e6e6e6;
+  box-shadow: 20px 0 0 -10px #e6e6e6;
+  /* Top and bottom of crown */
+}
+.rolex .crown:before, .rolex .crown:after {
+  right: 16px;
+}
+.rolex .crown:before {
+  top: 110px;
+  border-top: 30px solid #e6e6e6;
+  border-right: 40px solid transparent;
+  box-shadow: 0 -28px 0 0 #e6e6e6;
+  /* 6px margin */
+}
+.rolex .crown:after {
+  bottom: 110px;
+  border-left: 40px solid #e6e6e6;
+  border-top: 30px solid transparent;
+  box-shadow: 0 28px 0 0 #e6e6e6;
+  /* 6px margin */
+}
+
+/* Bezel radius and face */
+.bezel {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(45deg, #f0f0f0 0%, #ddd 50%, #f0f0f0 100%);
+  border-radius: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 6px #fff;
+  /* Bezel face */
+}
+.bezel .bezel-gradient {
+  position: absolute;
+  overflow: hidden;
+  height: 404px;
+  width: 404px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #373D7D 0%, #2E305B 30%, #4B60A6 50%, #2E305B 60%, #4B60A6 100%);
+  /* Main BG */
+  box-shadow: 0 0 0 2px #272A51, -1px 0 6px 0 #fff;
+  /* Shadow */
+  /* Gradient shine decor */
+  /* Gradient shine decor */
+}
+.bezel .bezel-gradient:after {
+  height: 280px;
+  width: 120px;
+  right: 0;
+  opacity: 0.6;
+  background: linear-gradient(128deg, #373D7D 0%, #2E305B 22%, #5666AD 22%, #4B60A6 50%, rgba(40, 42, 80, 0) 90%);
+}
+.bezel .bezel-gradient:before {
+  height: 300px;
+  width: 148px;
+  left: 0;
+  top: 50px;
+  opacity: 0.4;
+  background: linear-gradient(-138deg, #373D7D 0%, #2E305B 22%, #5666AD 22%, #4B60A6 64%, rgba(40, 42, 80, 0) 70%);
+}
+
+/* Bezel indents */
+.bez {
+  opacity: 0.7;
+  height: 18px;
+  width: 18px;
+  border-radius: inherit;
+  box-shadow: 0 222px 0 0 #fff, 0 -222px 0 0 #fff, 2px 216px 2px -2px #777, 2px -216px 2px -2px #777, 0 -215px 0 0 #222, 0 215px 0 0 #222;
+}
+.bez:before {
+  box-shadow: 0 222px 0 0 #fff, 0 -222px 0 0 #fff, 2px 216px 2px -2px #777, 2px -216px 2px -2px #777, 0 -215px 0 0 #222, 0 215px 0 0 #222;
+}
+
+i.bez:nth-of-type(1) {
+  -webkit-transform: rotateZ(calc(6deg * 1));
+          transform: rotateZ(calc(6deg * 1));
+}
+
+i.bez:nth-of-type(2) {
+  -webkit-transform: rotateZ(calc(6deg * 2));
+          transform: rotateZ(calc(6deg * 2));
+}
+
+i.bez:nth-of-type(3) {
+  -webkit-transform: rotateZ(calc(6deg * 3));
+          transform: rotateZ(calc(6deg * 3));
+}
+
+i.bez:nth-of-type(4) {
+  -webkit-transform: rotateZ(calc(6deg * 4));
+          transform: rotateZ(calc(6deg * 4));
+}
+
+i.bez:nth-of-type(5) {
+  -webkit-transform: rotateZ(calc(6deg * 5));
+          transform: rotateZ(calc(6deg * 5));
+}
+
+i.bez:nth-of-type(6) {
+  -webkit-transform: rotateZ(calc(6deg * 6));
+          transform: rotateZ(calc(6deg * 6));
+}
+
+i.bez:nth-of-type(7) {
+  -webkit-transform: rotateZ(calc(6deg * 7));
+          transform: rotateZ(calc(6deg * 7));
+}
+
+i.bez:nth-of-type(8) {
+  -webkit-transform: rotateZ(calc(6deg * 8));
+          transform: rotateZ(calc(6deg * 8));
+}
+
+i.bez:nth-of-type(9) {
+  -webkit-transform: rotateZ(calc(6deg * 9));
+          transform: rotateZ(calc(6deg * 9));
+}
+
+i.bez:nth-of-type(10) {
+  -webkit-transform: rotateZ(calc(6deg * 10));
+          transform: rotateZ(calc(6deg * 10));
+}
+
+i.bez:nth-of-type(11) {
+  -webkit-transform: rotateZ(calc(6deg * 11));
+          transform: rotateZ(calc(6deg * 11));
+}
+
+i.bez:nth-of-type(12) {
+  -webkit-transform: rotateZ(calc(6deg * 12));
+          transform: rotateZ(calc(6deg * 12));
+}
+
+i.bez:nth-of-type(13) {
+  -webkit-transform: rotateZ(calc(6deg * 13));
+          transform: rotateZ(calc(6deg * 13));
+}
+
+i.bez:nth-of-type(14) {
+  -webkit-transform: rotateZ(calc(6deg * 14));
+          transform: rotateZ(calc(6deg * 14));
+}
+
+/* 5, 15, 25, 35, 45, 55 marks */
+.bez-five-min {
+  height: 30px;
+  width: 10px;
+  box-shadow: 0 182px 0 0 #efefef, 0 -182px 0 0 #efefef, 2px -182px 0 0 #888, 2px 182px 0 0 #888;
+  opacity: 1;
+  -webkit-transform: rotateZ(30deg);
+          transform: rotateZ(30deg);
+}
+.bez-five-min:before, .bez-five-min:after {
+  height: inherit;
+  width: inherit;
+  box-shadow: inherit;
+}
+.bez-five-min:before {
+  -webkit-transform: rotateZ(60deg);
+          transform: rotateZ(60deg);
+}
+.bez-five-min:after {
+  -webkit-transform: rotateZ(-60deg);
+          transform: rotateZ(-60deg);
+}
+
+/* 10, 20, 30, 40, 50 numbers */
+.bez-num {
+  font-family: 'Chathura', sans-serif;
+  font-size: 42px;
+  letter-spacing: -0.02em;
+  position: absolute;
+  width: 406px;
+  height: 406px;
+}
+.bez-num li {
+  position: absolute;
+  height: 436px;
+  width: 48px;
+  text-align: center;
+  text-indent: -5px;
+  /* Fake inset */
+  color: #e0e0e0;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+}
+.bez-num li:nth-child(1) {
+  -webkit-transform: rotateZ(calc(60deg * 1));
+          transform: rotateZ(calc(60deg * 1));
+}
+.bez-num li:nth-child(2) {
+  -webkit-transform: rotateZ(calc(60deg * 2));
+          transform: rotateZ(calc(60deg * 2));
+}
+.bez-num li:nth-child(3) {
+  -webkit-transform: rotateZ(calc(60deg * 3));
+          transform: rotateZ(calc(60deg * 3));
+}
+.bez-num li:nth-child(4) {
+  -webkit-transform: rotateZ(calc(60deg * 4));
+          transform: rotateZ(calc(60deg * 4));
+}
+.bez-num li:nth-child(5) {
+  -webkit-transform: rotateZ(calc(60deg * 5));
+          transform: rotateZ(calc(60deg * 5));
+}
+
+/* Bezel top triangle and circle */
+.bezel-decor {
+  /* Bezel top triangle */
+  /* Bezel circle in triangle */
+}
+.bezel-decor:before {
+  top: 18px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-top: 32px solid #ddd;
+  border-right: 24px solid transparent;
+  border-left: 24px solid transparent;
+  box-shadow: 0 -1px 0 #333;
+}
+.bezel-decor:after {
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 17px;
+  box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.7);
+  background: linear-gradient(90deg, #ccc 0%, #ccc 30%, #eee 70%, #eee 100%);
+}
+
+/* 1-15 squares */
+.bez-min {
+  height: 14px;
+  width: 4px;
+  box-shadow: 0 -174px 0 0 #efefef, 1px -175px 0 0 #444;
+  /* Fake indent */
+}
+.bez-min:nth-child(5), .bez-min:nth-child(10) {
+  display: none;
+}
+
+.bez-min:nth-child(1) {
+  -webkit-transform: rotateZ(calc(6deg * 1));
+          transform: rotateZ(calc(6deg * 1));
+}
+
+.bez-min:nth-child(2) {
+  -webkit-transform: rotateZ(calc(6deg * 2));
+          transform: rotateZ(calc(6deg * 2));
+}
+
+.bez-min:nth-child(3) {
+  -webkit-transform: rotateZ(calc(6deg * 3));
+          transform: rotateZ(calc(6deg * 3));
+}
+
+.bez-min:nth-child(4) {
+  -webkit-transform: rotateZ(calc(6deg * 4));
+          transform: rotateZ(calc(6deg * 4));
+}
+
+.bez-min:nth-child(5) {
+  -webkit-transform: rotateZ(calc(6deg * 5));
+          transform: rotateZ(calc(6deg * 5));
+}
+
+.bez-min:nth-child(6) {
+  -webkit-transform: rotateZ(calc(6deg * 6));
+          transform: rotateZ(calc(6deg * 6));
+}
+
+.bez-min:nth-child(7) {
+  -webkit-transform: rotateZ(calc(6deg * 7));
+          transform: rotateZ(calc(6deg * 7));
+}
+
+.bez-min:nth-child(8) {
+  -webkit-transform: rotateZ(calc(6deg * 8));
+          transform: rotateZ(calc(6deg * 8));
+}
+
+.bez-min:nth-child(9) {
+  -webkit-transform: rotateZ(calc(6deg * 9));
+          transform: rotateZ(calc(6deg * 9));
+}
+
+.bez-min:nth-child(10) {
+  -webkit-transform: rotateZ(calc(6deg * 10));
+          transform: rotateZ(calc(6deg * 10));
+}
+
+.bez-min:nth-child(11) {
+  -webkit-transform: rotateZ(calc(6deg * 11));
+          transform: rotateZ(calc(6deg * 11));
+}
+
+.bez-min:nth-child(12) {
+  -webkit-transform: rotateZ(calc(6deg * 12));
+          transform: rotateZ(calc(6deg * 12));
+}
+
+.bez-min:nth-child(13) {
+  -webkit-transform: rotateZ(calc(6deg * 13));
+          transform: rotateZ(calc(6deg * 13));
+}
+
+.bez-min:nth-child(14) {
+  -webkit-transform: rotateZ(calc(6deg * 14));
+          transform: rotateZ(calc(6deg * 14));
+}
+
+/* Border, inner and outer rings */
+.crystal {
+  position: absolute;
+  width: 322px;
+  height: 322px;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 4px 0 rgba(0, 0, 0, 0.7), 0 0 0 2px #272A51;
+  background: linear-gradient(90deg, #ddd 0%, #777 65%, #ccc 100%);
+  /* Outer ring */
+  /* Inner ring */
+}
+.crystal:before, .crystal:after {
+  border-radius: 100%;
+}
+.crystal:before {
+  width: 316px;
+  height: 316px;
+  border: 2px solid #444;
+  background: linear-gradient(0deg, #aaa 0%, #888 65%, #aaa 100%);
+  box-shadow: inset 0 0 10px 0 #444;
+}
+.crystal:after {
+  width: 304px;
+  height: 304px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(-25deg, #666 0%, #ddd 55%, #999 100%);
+  box-shadow: inset 0 -2px 4px 0 rgba(255, 255, 255, 0.8), inset 0 2px 3px 0 rgba(255, 255, 255, 0.6);
+}
+
+.face {
+  position: absolute;
+  width: 286px;
+  height: 286px;
+  border-radius: 100%;
+  background: radial-gradient(ellipse at center, #3B509B 0%, #323868 80%);
+  box-shadow: inset 0 0 8px 2px rgba(0, 0, 0, 0.4), inset 0 -4px 20px 0 rgba(0, 0, 0, 0.2);
+  /* Thicker 30, reduced height */
+  /* Each second tick */
+}
+.face:after {
+  width: 3px;
+  height: 3px;
+  background: #e0e0e0;
+  top: 281px;
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
+.face .sec {
+  height: 7px;
+  width: 1px;
+  box-shadow: 0 137px 0 0 #e0e0e0, 0 147px 0 0 rgba(255, 255, 255, 0.2), 0 -137px 0 0 #e0e0e0;
+  /* Thicker 35, 5, before:20, after:50 */
+  /* Thicker 40, 10, before:25, after:55 */
+  /* Thicker before:15, after:50 */
+  /* Remove ticks for footer text */
+}
+.face .sec:before {
+  box-shadow: 0 -137px 0 0 #e0e0e0, 0 137px 0 0 #e0e0e0, 0 -147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(5) {
+  box-shadow: 0 137px 0 0 #e0e0e0, 1px 137px 0 0 #e0e0e0, -1px 137px 0 0 #e0e0e0, 0 -137px 0 0 #e0e0e0, 1px -137px 0 0 #e0e0e0, -1px -137px 0 0 #e0e0e0, 0 147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(5):before {
+  box-shadow: 0 -137px 0 0 #e0e0e0, 1px -137px 0 0 #e0e0e0, -1px -137px 0 0 #e0e0e0, 0 -147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(5):after {
+  box-shadow: 0 137px 0 0 #e0e0e0, 1px 137px 0 0 #e0e0e0, -1px 137px 0 0 #e0e0e0;
+}
+.face .sec:nth-of-type(10) {
+  box-shadow: 0 137px 0 0 #e0e0e0, 1px 137px 0 0 #e0e0e0, -1px 137px 0 0 #e0e0e0, 0 -137px 0 0 #e0e0e0, 1px -137px 0 0 #e0e0e0, -1px -137px 0 0 #e0e0e0, 0 147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(10):before {
+  box-shadow: 0 -137px 0 0 #e0e0e0, 1px -137px 0 0 #e0e0e0, -1px -137px 0 0 #e0e0e0, 0 -147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(10):after {
+  box-shadow: 0 137px 0 0 #e0e0e0, 1px 137px 0 0 #e0e0e0, -1px 137px 0 0 #e0e0e0;
+}
+.face .sec:nth-of-type(15):before {
+  box-shadow: 0 -137px 0 0 #e0e0e0, 1px -137px 0 0 #e0e0e0, -1px -137px 0 0 #e0e0e0, 0 -147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(15):after {
+  box-shadow: 0 137px 0 0 #e0e0e0, 1px 137px 0 0 #e0e0e0, -1px 137px 0 0 #e0e0e0;
+}
+.face .sec:nth-of-type(1) {
+  box-shadow: 0 -137px 0 0 #e0e0e0, 0 147px 0 0 rgba(255, 255, 255, 0.2);
+  /* Shorter tick 31 */
+}
+.face .sec:nth-of-type(1):after {
+  height: 1px;
+  width: 3px;
+  background: #e0e0e0;
+  top: 143px;
+  left: -1px;
+}
+.face .sec:nth-of-type(14) {
+  /* Shorter tick 29 - Super hacky */
+}
+.face .sec:nth-of-type(14):before {
+  box-shadow: 0 137px 0 0 #e0e0e0, 0 -147px 0 0 rgba(255, 255, 255, 0.2);
+}
+.face .sec:nth-of-type(14):after {
+  height: 3px;
+  width: 1px;
+  background: #e0e0e0;
+  left: 140px;
+  top: 2px;
+}
+.face .sec:nth-of-type(15) {
+  box-shadow: 0 -137px 0 0 #e0e0e0, 1px -137px 0 0 #e0e0e0, -1px -137px 0 0 #e0e0e0, 0 147px 0 0 rgba(255, 255, 255, 0.2), 1px 147px 0 0 rgba(255, 255, 255, 0.2), -1px 147px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+i.sec:nth-of-type(1) {
+  -webkit-transform: rotateZ(calc(6deg * 1));
+          transform: rotateZ(calc(6deg * 1));
+}
+
+i.sec:nth-of-type(2) {
+  -webkit-transform: rotateZ(calc(6deg * 2));
+          transform: rotateZ(calc(6deg * 2));
+}
+
+i.sec:nth-of-type(3) {
+  -webkit-transform: rotateZ(calc(6deg * 3));
+          transform: rotateZ(calc(6deg * 3));
+}
+
+i.sec:nth-of-type(4) {
+  -webkit-transform: rotateZ(calc(6deg * 4));
+          transform: rotateZ(calc(6deg * 4));
+}
+
+i.sec:nth-of-type(5) {
+  -webkit-transform: rotateZ(calc(6deg * 5));
+          transform: rotateZ(calc(6deg * 5));
+}
+
+i.sec:nth-of-type(6) {
+  -webkit-transform: rotateZ(calc(6deg * 6));
+          transform: rotateZ(calc(6deg * 6));
+}
+
+i.sec:nth-of-type(7) {
+  -webkit-transform: rotateZ(calc(6deg * 7));
+          transform: rotateZ(calc(6deg * 7));
+}
+
+i.sec:nth-of-type(8) {
+  -webkit-transform: rotateZ(calc(6deg * 8));
+          transform: rotateZ(calc(6deg * 8));
+}
+
+i.sec:nth-of-type(9) {
+  -webkit-transform: rotateZ(calc(6deg * 9));
+          transform: rotateZ(calc(6deg * 9));
+}
+
+i.sec:nth-of-type(10) {
+  -webkit-transform: rotateZ(calc(6deg * 10));
+          transform: rotateZ(calc(6deg * 10));
+}
+
+i.sec:nth-of-type(11) {
+  -webkit-transform: rotateZ(calc(6deg * 11));
+          transform: rotateZ(calc(6deg * 11));
+}
+
+i.sec:nth-of-type(12) {
+  -webkit-transform: rotateZ(calc(6deg * 12));
+          transform: rotateZ(calc(6deg * 12));
+}
+
+i.sec:nth-of-type(13) {
+  -webkit-transform: rotateZ(calc(6deg * 13));
+          transform: rotateZ(calc(6deg * 13));
+}
+
+i.sec:nth-of-type(14) {
+  -webkit-transform: rotateZ(calc(6deg * 14));
+          transform: rotateZ(calc(6deg * 14));
+}
+
+/* Rolex text */
+.content-upper {
+  color: #ddd;
+  text-transform: uppercase;
+}
+.content-upper .logo {
+  top: 82px;
+  position: absolute;
+  width: 8px;
+  height: 6px;
+  border: 2px solid #ddd;
+  border-top-width: 2px;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  /* Dots */
+  /* Center tip */
+}
+.content-upper .logo:before, .content-upper .logo:after {
+  top: -16px;
+}
+.content-upper .logo:before {
+  left: 1px;
+  width: 2px;
+  height: 2px;
+  background: #ddd;
+  border-radius: 50%;
+  box-shadow: 5px 1px 0 #ddd, 9px 3px 0 #ddd, -5px 1px 0 #ddd, -9px 3px 0 #ddd;
+}
+.content-upper .logo:after {
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-right: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-bottom: 16px solid #ddd;
+}
+.content-upper .logo .logo-left,
+.content-upper .logo .logo-right {
+  position: absolute;
+  top: -15px;
+  border-bottom: 15px solid #ddd;
+}
+.content-upper .logo .logo-left:before,
+.content-upper .logo .logo-right:before {
+  top: 1px;
+  border-top: 15px solid transparent;
+}
+.content-upper .logo .logo-left {
+  left: -3px;
+  border-right: 1px solid transparent;
+  border-left: 2px solid transparent;
+  -webkit-transform: rotateZ(-15deg);
+          transform: rotateZ(-15deg);
+}
+.content-upper .logo .logo-left:before {
+  left: -4px;
+  border-left: 2px solid #ddd;
+  -webkit-transform: rotateZ(-5deg);
+          transform: rotateZ(-5deg);
+}
+.content-upper .logo .logo-right {
+  right: -3px;
+  border-right: 2px solid transparent;
+  border-left: 1px solid transparent;
+  -webkit-transform: rotateZ(15deg);
+          transform: rotateZ(15deg);
+}
+.content-upper .logo .logo-right:before {
+  right: -4px;
+  border-right: 2px solid #ddd;
+  -webkit-transform: rotateZ(5deg);
+          transform: rotateZ(5deg);
+}
+.content-upper .name {
+  font-family: 'Rhodium Libre', serif;
+  position: absolute;
+  font-size: 1.125em;
+  letter-spacing: 0.07em;
+  /* 16px */
+  text-align: center;
+  width: 100%;
+  top: 90px;
+}
+.content-upper .sub-name {
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  text-align: center;
+  top: 106px;
+  width: 100%;
+  font-size: 0.5625em;
+  /* 9px */
+}
+
+/* Submariner text */
+.content-lower {
+  position: absolute;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  top: 178px;
+  color: #ddd;
+  width: 100%;
+}
+.content-lower .sub-text {
+  text-transform: uppercase;
+  font-size: 0.8125em;
+  /* 13px */
+  letter-spacing: 0.02em;
+}
+.content-lower .sub-num {
+  font-size: 0.75em;
+  /* 12px */
+  top: -1px;
+  position: relative;
+}
+.content-lower .sub-num em {
+  font-style: italic;
+  font-weight: 300;
+}
+.content-lower .sub-fine {
+  text-transform: uppercase;
+  font-size: 0.5625em;
+  /* 9px */
+  letter-spacing: -0.05em;
+}
+.content-lower .sub-swiss {
+  position: absolute;
+  top: 96px;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 6px;
+  /* 6px */
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+.content-lower .sub-swiss span {
+  display: inline-block;
+  z-index: 2;
+  position: relative;
+}
+.content-lower .sub-swiss span:nth-child(1) {
+  -webkit-transform: rotateZ(4deg);
+          transform: rotateZ(4deg);
+}
+.content-lower .sub-swiss span:nth-child(2) {
+  -webkit-transform: rotateZ(-4deg);
+          transform: rotateZ(-4deg);
+}
+
+/* Face triangle marker */
+.marker-triangle {
+  position: absolute;
+  left: -2px;
+  right: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-top: 48px solid #333;
+  border-right: 21px solid transparent;
+  border-left: 21px solid transparent;
+  top: 16px;
+  /* BG */
+  /* White FG */
+}
+.marker-triangle:before {
+  width: 0;
+  height: 0;
+  border-top: 47px solid #ccc;
+  border-right: 19px solid transparent;
+  border-left: 19px solid transparent;
+  top: -48px;
+  left: -18px;
+}
+.marker-triangle:after {
+  width: 0;
+  height: 0;
+  border-top: 40px solid #fff;
+  border-right: 15px solid transparent;
+  border-left: 14px solid transparent;
+  top: -46px;
+  left: -13px;
+  -webkit-filter: drop-shadow(1px 0 0 rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(1px 0 0 rgba(0, 0, 0, 0.3));
+}
+
+/* Face square markers */
+.marker-square {
+  position: absolute;
+  width: 43px;
+  height: 17px;
+}
+.marker-square:before, .marker-square:after {
+  width: inherit;
+  height: inherit;
+  background: #fff;
+  box-shadow: inset -1px -1px 1px 0 #999, inset -2px -2px 7px 0 #aaa, -1px -1px 2px 1px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ccc;
+}
+.marker-square:before {
+  left: -108px;
+}
+.marker-square:after {
+  top: 108px;
+  -webkit-transform: rotateZ(-90deg);
+          transform: rotateZ(-90deg);
+}
+
+/* Face circle markers */
+.markers-circle {
+  height: 26px;
+  width: 26px;
+}
+.markers-circle:before {
+  top: -116px;
+}
+.markers-circle:after {
+  top: 116px;
+}
+.markers-circle:nth-child(1) {
+  -webkit-transform: rotateZ(30deg);
+          transform: rotateZ(30deg);
+}
+.markers-circle:nth-child(2) {
+  -webkit-transform: rotateZ(-30deg);
+          transform: rotateZ(-30deg);
+}
+.markers-circle:nth-child(2):before, .markers-circle:nth-child(2):after {
+  -webkit-transform: rotateZ(-200deg);
+          transform: rotateZ(-200deg);
+}
+.markers-circle:nth-child(3) {
+  -webkit-transform: rotateZ(60deg);
+          transform: rotateZ(60deg);
+}
+.markers-circle:nth-child(3):before, .markers-circle:nth-child(3):after {
+  -webkit-transform: rotateZ(80deg);
+          transform: rotateZ(80deg);
+}
+.markers-circle:nth-child(4) {
+  -webkit-transform: rotateZ(-60deg);
+          transform: rotateZ(-60deg);
+}
+.markers-circle:nth-child(4):before, .markers-circle:nth-child(4):after {
+  -webkit-transform: rotateZ(200deg);
+          transform: rotateZ(200deg);
+}
+
+/* Date glass */
+.date {
+  width: 76px;
+  height: 60px;
+  top: 8px;
+  bottom: 0;
+  margin: auto;
+  right: 6px;
+  position: absolute;
+  border-radius: 20px / 30px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 2px -2px 12px 2px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  /* Shine */
+}
+.date:after {
+  top: -120px;
+  left: -80px;
+  width: 180px;
+  height: 400px;
+  -webkit-transform: rotateZ(-25deg);
+          transform: rotateZ(-25deg);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.3) 48%, rgba(255, 255, 255, 0) 68%);
+}
+
+/* Date box, border, and number */
+#date-num {
+  font-family: 'Krona One', sans-serif;
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  margin: auto;
+  right: 16px;
+  text-align: center;
+  text-indent: -1px;
+  letter-spacing: -0.06em;
+  font-size: 1.6875em;
+  /* 27px */
+  line-height: 1.2;
+  color: #3e3e3e;
+  height: 36px;
+  width: 56px;
+  background: radial-gradient(ellipse at center, #efefef 0%, #A7ACB0 100%);
+  border-radius: 4px;
+  border-top: 3px solid #373D7D;
+  border-left: 3px solid #373D7D;
+  border-bottom: 3px solid #5666AD;
+  border-right: 3px solid #5666AD;
+  box-shadow: -1px -1px 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Second hand */
+.hand-sec {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+  /* Circles */
+  /* Hand */
+}
+.hand-sec:after {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  background: #eee;
+  border: 5px solid #d0d0d0;
+  box-shadow: inset 1px 1px 2px 0 #555, 0 -73px 1px -2px #fff, 0 48px 0 -2px #ddd, 0 -74px 0 -1px #999, 0 -74px 0 1px #ddd;
+}
+.hand-sec:before {
+  height: 184px;
+  width: 2px;
+  background: linear-gradient(to bottom, #aaa 0%, #d0d0d0 30%, #ddd 100%);
+  bottom: -44px;
+  left: 7px;
+}
+
+/* Shadow */
+.hand-sec-details {
+  position: absolute;
+  height: 176px;
+  width: 0;
+  bottom: -44px;
+  left: 10px;
+  z-index: -1;
+  -webkit-transform: rotateZ(3deg);
+          transform: rotateZ(3deg);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Minute hand */
+.hand-min {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.4);
+  background: #d0d0d0;
+  /* Arm */
+  /* Top of hand */
+}
+.hand-min:before {
+  height: 86px;
+  width: 16px;
+  bottom: 28px;
+  left: 3px;
+  background: #fff;
+  border: 3px solid #d0d0d0;
+  box-shadow: inset 1px 1px 2px 0 #999, 0 0 4px 1px rgba(0, 0, 0, 0.4);
+}
+.hand-min span {
+  height: 0;
+  width: 0;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-bottom: 26px solid #d0d0d0;
+  position: absolute;
+  bottom: 114px;
+  left: 3px;
+  /* Bottom of hand  */
+}
+.hand-min span:after {
+  height: 0;
+  width: 0;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-top: 16px solid #d0d0d0;
+  position: absolute;
+  bottom: -128px;
+  left: -8px;
+}
+
+/* Hour hand */
+.hand-hour {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.3);
+  /* Arm */
+  /* Circle, covers box-shadow of arm */
+  /* Circle and triangle*/
+}
+.hand-hour:before {
+  height: 54px;
+  width: 14px;
+  bottom: 24px;
+  left: 6px;
+  background: #fff;
+  border: 3px solid #d0d0d0;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4), 0 -10px 7px 0 rgba(0, 0, 0, 0.4);
+}
+.hand-hour:after {
+  background: #d0d0d0;
+  height: inherit;
+  width: inherit;
+  border-radius: inherit;
+}
+.hand-hour span {
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  border: 3px solid #d0d0d0;
+  bottom: 48px;
+  left: -3px;
+  position: absolute;
+  /* Top triangle - BG */
+  /* Top triangle - FG */
+  /* Circle decor */
+}
+.hand-hour span:before {
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-bottom: 22px solid #d0d0d0;
+  position: absolute;
+  bottom: 27px;
+  left: 6px;
+}
+.hand-hour span:after {
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  border-bottom: 10px solid #fff;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+}
+.hand-hour span .hour-decor {
+  height: 16px;
+  width: 3px;
+  bottom: -14px;
+  background: #d0d0d0;
+}
+.hand-hour span .hour-decor:after, .hand-hour span .hour-decor:before {
+  width: inherit;
+  height: inherit;
+  background: inherit;
+}
+.hand-hour span .hour-decor:before {
+  -webkit-transform: rotateZ(60deg);
+          transform: rotateZ(60deg);
+  top: -10px;
+  left: 6px;
+}
+.hand-hour span .hour-decor:after {
+  -webkit-transform: rotateZ(120deg);
+          transform: rotateZ(120deg);
+  top: -10px;
+  left: -6px;
+}
+
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+var today = new Date();
+var day = today.getDate();
+/*if (day < 10) {
+  day = '0' + day
+}*/
+var out = document.getElementById("date-num");
+out.innerHTML = day;
+
+// Time
+$(document).ready(function() {
+	setInterval(function(){
+		getTime();
+	}, 50);
+	function getTime() {
+		var d = new Date();
+		var s = d.getSeconds() + (d.getMilliseconds()/1000);
+		var m = d.getMinutes();
+		var h = hour12();	
+		$(".hand-sec").css("transform", "rotateZ(" + s*6 + "deg)");
+		$(".hand-min").css("transform", "rotateZ(" + m*6 + "deg)");
+		$(".hand-hour").css("transform", "rotateZ(" + (h*30 + m*0.5) + "deg)");
+		function hour12() {
+			var hour = d.getHours();
+			if(hour >= 12) {
+				hour = hour-12;
+			}
+			if(hour == 0) {
+				h = 12;
+			}
+			return hour;
+		}
+	}
+});
+
+</script>
+</head>
+<body>
+
+	
+<!-- HTML isn't organized very well-->
+<div class="rolex">
+  <div class="band"></div>
+  <div class="crown"></div>
+  <div class="bezel"><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i><i class="bez"></i>
+    <div class="bezel-gradient"></div>
+  </div><i class="bez-five-min"></i>
+  <ul class="bez-num">
+    <li>10</li>
+    <li>20</li>
+    <li>30</li>
+    <li>40</li>
+    <li>50</li>
+  </ul>
+  <div class="bezel-decor"><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i><i class="bez-min"></i>
+  </div>
+  <div class="crystal"></div>
+  <div class="face">
+    <div class="content-upper">
+      <div class="logo">
+        <div class="logo-left"></div>
+        <div class="logo-right"></div>
+      </div>
+      <p class="name">Rolex</p>
+    </div>
+    <div class="content-lower">
+      <p class="sub-text">Submariner</p>
+      <p class="sub-num">1000<em>ft</em> = 300<em>m</em></p>
+      <p class="sub-fine">Superlative Chronometer<br/>Officially Certified</p>
+      <p class="sub-swiss"><span>Chris</span> <span>made</span></p>
+    </div><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i><i class="sec"></i>
+    <div class="marker-triangle"></div>
+    <div class="marker-square"></div>
+    <div class="marker-circle"><i class="markers-circle"></i><i class="markers-circle"></i><i class="markers-circle"></i><i class="markers-circle"></i>
+    </div>
+    <div class="date"></div>
+    <div id="date-num"></div>
+    <div class="hand-hour"><span><i class="hour-decor"></i></span></div>
+    <div class="hand-min"><span></div>
+    <div class="hand-sec">
+      <div class="hand-sec-details"></div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
