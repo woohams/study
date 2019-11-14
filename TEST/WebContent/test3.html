@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>::성적 입력::</title>
+<link rel="icon" type="image/svg+xml" href="http://www.w3.org/html/logo/downloads/HTML5_Badge.svg">
 <link rel="stylesheet" type="text/css" href="test.css">
 <script type="text/javascript">
 //유효성 체크하는 함수 만들기
@@ -16,57 +17,84 @@ var send=function(){
       return;
    }
    if(isNaN(f.java.value)){
-      alert('자바점수가 숫자가 아니에요');
+      alert('자바점수가 숫자가 아닙니다. 확인해주세요.');
       f.java.select();
       return;
+   } else if(f.java.value > 100){
+	   alert('자바점수가 100점을 초과했습니다. 확인해주세요.');
+	   f.java.select();
+	   return;
+   } else if(f.java.value < 0){
+	   alert('자바점수가 0점 미만입니다. 확인해주세요.');
+	   f.java.select();
+	   return;
    }
    if(isNaN(f.db.value)){
-      alert('DB점수가 숫자가 아니에요');
+      alert('DB점수가 숫자가 아닙니다. 확인해주세요.');
       f.db.select();
       return;
+   } else if(f.db.value > 100){
+	   alert('DB점수가 100점을 초과했습니다. 확인해주세요.');
+	   f.java.select();
+	   return;
+   } else if(f.db.value < 0){
+	   alert('DB점수가 0점 미만입니다. 확인해주세요.');
+	   f.java.select();
+	   return;
    }
    if(isNaN(f.jsp.value)){
-      alert('JSP점수가 숫자가 아니에요');
+      alert('JSP점수가 숫자가 아닙니다. 확인해주세요.');
       f.jsp.select();
       return;
+   } else if(f.jsp.value > 100){
+	   alert('JSP점수가 100점을 초과했습니다. 확인해주세요.');
+	   f.java.select();
+	   return;
+   } else if(f.jsp.value < 0){
+	   alert('JSP점수가 0점 미만입니다. 확인해주세요.');
+	   f.java.select();
+	   return;
    }
    f.submit();
 }
 
 </script>
+
+
+
 </head>
 <body>
-<h1>성적입력</h1>
+<b style="font-size:30px;">성적입력</b> <b style="font-size:18px;">(미입력시 0점처리)</b>
    <form name="f" action="test4.jsp" method="post">
    <table border=1>
       <tr>
-         <td colspan="2">학번</td>
-         <td>
-         <input type="text" name="num" id="stuNum">
+         <td colspan="2" style="text-align:center;">학번</td>
+         <td style="text-align:right;">
+         	<input type="text" name="num" id="stuNum" placeholder="필수 입력사항입니다." />
          </td>
       </tr>
       <tr>
          <td rowspan="3">과목</td>
          <td>Java</td>
          <td>
-         <input type="text" name="java" >
+         	<input type="text" name="java" placeholder="점수는 0~100점 사이입니다."/>
          </td>
       </tr>
       <tr>
          <td>Database</td>
          <td>
-         <input type="text" name="db" >
+         <input type="text" name="db" placeholder="점수는 0~100점 사이입니다." />
          </td>
       </tr>
       <tr>
          <td>JSP</td>
          <td>
-         <input type="text" name="jsp" >
+         	<input type="text" name="jsp" placeholder="점수는 0~100점 사이입니다." />
          </td>
       </tr>
       <tr>
-         <td colspan="3">
-         <button class="button5" type="button" onclick="send()">전송</button>
+         <td colspan="3" style="text-align: right;">
+         	<button class="button5" type="button" onclick="send()">전송</button>
          </td>
       </tr>
    </table>

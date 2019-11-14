@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>::성적 계산::</title>
+<link rel="icon" type="image/svg+xml" href="http://www.w3.org/html/logo/downloads/HTML5_Badge.svg">
 <link rel="stylesheet" type="text/css" href="test.css">
 <script type="text/javascript">
 	
@@ -50,6 +51,7 @@
 	float avg = sum / 3.0f;
 	
 	String score = " ";
+	String grade = " ";
 	if(avg >= 95) {
 		score = "A+";
 	} else if(avg >= 90 && avg < 95) {
@@ -69,6 +71,19 @@
 	} else {
 		score = "F";
 	}
+	
+	if(score == "A" || score == "A+"){
+		grade = "훌륭합니다!";
+	} else if(score == "B" || score == "B+"){
+		grade = "잘했습니다!!";
+	} else if(score == "C" || score == "C+"){
+		grade = "조금 더 노력하십시오.";
+	} else if(score == "D" || score =="D+"){
+		grade = "많이 노셨네요?";
+	} else if(score == "F"){
+		grade = "나가 뒤지십시오.";
+	}
+	
 %>
 
 <br> sum:
@@ -78,7 +93,21 @@
 <br> score:
 <%=score %>
 </script>
+<style type="text/css">
 
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+/*tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}*/
+</style>
+<h1>&nbsp;&nbsp;&nbsp;당신의 성적표</h1>
 <table border='1'>
 	<tr>
 		<td colspan="2">학번</td>
@@ -105,7 +134,11 @@
 		<td colspan="2">학 점</td>
 		<td style="color: blue"><b><%=score %></b></td>
 	<tr>
-		<td colspan="3">
+	<tr>
+		<td colspan="2">코멘트</td>
+		<td style="color: orange"><b><%=grade %></b></td>
+	<tr>
+		<td colspan="3" style="text-align: right;">
 			<input type="button" class="button4" type="button" onclick="history.back()" value="입력화면" />
 		</td>
 	</tr>
