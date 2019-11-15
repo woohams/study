@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>::성적 계산::</title>
-<link rel="icon" type="image/svg+xml" href="http://www.w3.org/html/logo/downloads/HTML5_Badge.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="calcFavicon.png">
 <link rel="stylesheet" type="text/css" href="test.css">
 <script type="text/javascript">
 	

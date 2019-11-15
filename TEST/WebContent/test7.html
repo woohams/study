@@ -7,27 +7,43 @@
 <link rel="icon" type="image/png" sizes="16x16" href="clockFavicon.png">
 
 <style type="text/css">
+html,body {
+    height: 100%;
+}
 body {
-    background: black;
+    background: #0f3854;
+    background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+    background-size: 100%;
+}
+p {
+    margin: 0;
+    padding: 0;
 }
 
 .clock {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    color: #17D4FE;
-    font-size: 80px;
-    font-family: Orbitron;
-    letter-spacing: 7px;
+    font-family: 'Share Tech Mono', monospace;
+    color: #ffffff;
     text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+}
+#clock{
+	letter-spacing: 0.05em;
+        font-size: 80px;
+        padding: 5px 0;
 }
 #date {
-	font-size: 32px;
+	letter-spacing: 0.1em;
+        font-size: 24px;
 }   
 #comment {
-	font-size: 20px;
-	text-align: right;
+	letter-spacing: 0.1em;
+        font-size: 12px;
+        padding: 20px 0 0;
 }
 
 </style>
@@ -40,35 +56,23 @@ body {
 		var yyyy = "2" + date.getYear() - 100;
 		var mm = date.getMonth() + 1;
 		var dd = date.getDate();
-		var ddd = date.getDay();
+		var ddd = date.getUTCDay();
 		
-		alert("Have a nice day");
-		
-		/* if(ddd == 1)
+		if(ddd == 1){
 			ddd = 'Mon';
-		else if(ddd == 2)
-			ddd = "Tues";
-		else if(ddd == 3)
-			ddd = "Wednes";
-		else if(ddd == 4)
-			ddd = "Thurs";
-		else if(ddd == 5)
+		} else if(ddd == 2){
+			ddd = 'Tues';
+		} else if(ddd == 3){
+			ddd = 'Wednes';
+		} else if(ddd == 4){
+			ddd = 'Thurs';
+		} else if(ddd == 5){
 			ddd = 'Fri';
-		else if(ddd == 6)
+		} else if(ddd == 6){
 			ddd = 'Satur';
-		else if(ddd == 7)
-			ddd = 'Sun'; */  
-		
-	 	switch(ddd){
-		case 1: ddd = 'Mon'; break;
-		case 2: ddd = 'Tues'; break;
-		case 3: ddd = 'Wednes'; break;
-		case 4: ddd = 'Thurs'; break;
-		case 5: ddd = 'Fri'; break;
-		case 6: ddd = 'Satur'; break;
-		case 7: ddd = 'Sun'; 
-		}  
-		
+		} else if(ddd == 7){
+			ddd = 'Sun';  
+		}
 		
 		var date = yyyy + "-" + mm + "-" + dd + "  "+ ddd + "day";
 	    document.getElementById("date").textContent = date;
@@ -101,7 +105,7 @@ body {
 	    m = (m < 10) ? "0" + m : m;
 	    s = (s < 10) ? "0" + s : s;
 	    
-	    var time = h + ":" + m + ":" + s + " " + session;
+	    var time = session + " " + h + ":" + m + ":" + s;
 	    document.getElementById("clock").textContent = time;
 	    document.getElementById("clock").innerText = time;
 	    setTimeout(showTime, 1000);
