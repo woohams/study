@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
 
 
 <!doctype html>
@@ -11,16 +12,17 @@
 <script type="text/javascript">
 	
 <%
-	//1. 사용자가 입력한 값 받기(num, java, db, jsp)
+	//1. 사용자가 입력한 값 받기(num, name, java, db, jsp)
 	//내장객체 : request. HttpServletRequest 타입 : response. HttpServletResponse 타입
 	String num = request.getParameter("num");
+	String name = request.getParameter("name");
 	String jav = request.getParameter("java");
 	String db = request.getParameter("db");
 	String jsp = request.getParameter("jsp");
-	out.println("학번 : " + num + ", java=" + jav + ", db=" + db + ", jsp=" + jsp);
+	out.println("학번 : " + num + ", 이름 : " + name + ", java=" + jav + ", db=" + db + ", jsp=" + jsp);
 
 	// 유효성 체크 널 체크 => 요청 경로가 잘못된 경우
-	if (num == null || jav == null || db == null || jsp == null) {
+	if (num == null || name == null || jav == null || db == null || jsp == null) {
 %>
 	//자바스크립트 처리방식
 	<script type="text/javascript">
@@ -29,7 +31,7 @@
 </script>
 
 <%
-	return;
+		return;
 	}
 
 	//3. 빈문자열로 넘어올 경우 0점 처리 
@@ -86,11 +88,11 @@
 	
 %>
 
-<br> sum:
+<br/> sum:
 <%=sum%>
-<br> avg:
+<br/> avg:
 <%=avg%>
-<br> score:
+<br/> score:
 <%=score %>
 </script>
 <style type="text/css">
@@ -107,40 +109,43 @@ th {
   color: white;
 }*/
 </style>
-<h1>&nbsp;&nbsp;&nbsp;당신의 성적표</h1>
-<table border='1'>
-	<tr>
-		<td colspan="2">학번</td>
-		<td><b><%=num%></b></td>
-	</tr>
-	<tr>
-		<td rowspan="3">과목</td>
-		<td>Java</td>
-		<td><b><%=javInt%></b></td>
-	</tr>
-	<tr>
-		<td>Database</td>
-		<td><b><%=dbInt%></b></td>
-	</tr>
-	<tr>
-		<td>JSP</td>
-		<td><b><%=jspInt%></b></td>
-	</tr>
-	<tr>
-		<td colspan="2">평균점수</td>
-		<td style="color: red"><b><%=avg%></b></td>
-	</tr>
-	<tr>
-		<td colspan="2">학 점</td>
-		<td style="color: blue"><b><%=score %></b></td>
-	<tr>
-	<tr>
-		<td colspan="2">코멘트</td>
-		<td style="color: orange"><b><%=grade %></b></td>
-	<tr>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" class="button4" type="button" onclick="history.back()" value="입력화면" />
-		</td>
-	</tr>
-</table>
+<div>
+	<h1>&nbsp;<%=name %>님의 성적표</h1>
+	
+	<table border='1'>
+		<tr>
+			<td colspan="2">학번</td>
+			<td><b><%=num%></b></td>
+		</tr>
+		<tr>
+			<td rowspan="3">과목</td>
+			<td>Java</td>
+			<td><b><%=javInt%></b></td>
+		</tr>
+		<tr>
+			<td>Database</td>
+			<td><b><%=dbInt%></b></td>
+		</tr>
+		<tr>
+			<td>JSP</td>
+			<td><b><%=jspInt%></b></td>
+		</tr>
+		<tr>
+			<td colspan="2">평균점수</td>
+			<td style="color: red"><b><%=avg%></b></td>
+		</tr>
+		<tr>
+			<td colspan="2">학 점</td>
+			<td style="color: blue"><b><%=score %></b></td>
+		<tr>
+		<tr>
+			<td colspan="2">코멘트</td>
+			<td style="color: orange"><b><%=grade %></b></td>
+		<tr>
+			<td colspan="3" style="text-align: right;">
+				<input type="button" class="button4" type="button" onclick="history.back()" value="입력화면" />
+			</td>
+		</tr>
+	</table>
+</div>
 </html>

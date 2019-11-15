@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,11 @@ var send=function(){
    //학번 체크
 
    //var n = getElementById('num');
+	if(!f.name.value){
+	      alert('이름을 입력하세요.');
+	      f.name.focus();
+	      return;
+	   }
    if(!f.num.value){
       alert('학번을 입력하세요.');
       f.num.focus();
@@ -68,10 +74,16 @@ var send=function(){
    <form name="f" action="test4.jsp" method="post">
    <table border=1>
       <tr>
-         <td colspan="2" style="text-align:center;">학번</td>
-         <td style="text-align:right;">
+         <td colspan="2" style="text-align: center;">학번</td>
+         <td style="text-align: right;">
          	<input type="text" name="num" id="stuNum" placeholder="필수 입력사항입니다." />
          </td>
+      </tr>
+      <tr>
+      	<td colspan="2" style="text-align: center;">이름</td>
+      	<td style="text-align: right;">
+      		<input type="text" name="name" placeholder="필수 입력사항입니다." />
+      	</td>
       </tr>
       <tr>
          <td rowspan="3">과목</td>
