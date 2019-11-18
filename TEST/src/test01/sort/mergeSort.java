@@ -7,6 +7,55 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class mergeSort {
+	
+	private static int[] Sorted;
+	  
+    public static void mergeSort(int[] arr) {
+        Sorted = new int[arr.length];
+        mergeSort(arr, 0, arr.length - 1);
+    }
+
+    private static void mergeSort(int[] arr, int begin, int end) {
+        if (begin < end) {
+            final int middle = (begin + end) / 2;
+            mergeSort(arr, begin, middle);
+            mergeSort(arr, middle + 1, end);
+            merge(arr, begin, middle, end);
+        }
+    }
+
+    private static void merge(int[] arr, int begin, int middle, int end) {
+        int i = begin;
+        int j = middle + 1;
+        int k = begin;
+
+        while (i <= middle && j <= end) {
+            if (arr[i] <= arr[j]) {
+            	Sorted[k] = arr[i++];
+            } else {
+            	Sorted[k] = arr[j++];
+            }
+
+            k++;
+        }
+
+        int t;
+        if (i > middle) {
+            for (t = j; t <= end; t++, k++) {
+            	Sorted[k] = arr[t];
+            }
+        } else {
+            for (t = i; t <= middle; t++, k++) {
+            	Sorted[k] = arr[t];
+            }
+        }
+
+        for (t = begin; t <= end; t++) {
+            arr[t] = Sorted[t];
+        }
+    }
+    
+    /* ******************************************************************** */
 
 	static int[] sorted = new int[100000000];
 
