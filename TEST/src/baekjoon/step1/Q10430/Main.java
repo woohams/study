@@ -1,4 +1,6 @@
 package baekjoon.step1.Q10430;
+
+
 /*
 (A+B)%C는 (A%C + B%C)%C 와 같을까?
 (A×B)%C는 (A%C × B%C)%C 와 같을까?
@@ -8,11 +10,29 @@ package baekjoon.step1.Q10430;
 
 첫째 줄에 (A+B)%C, 둘째 줄에 (A%C + B%C)%C, 셋째 줄에 (A×B)%C, 넷째 줄에 (A%C × B%C)%C를 출력한다.
 
-
+예제입력 : 5 8 4
+예제출력 : 	1 
+		1 
+		0 
+		0
 
 */
 
-
+import java.util.Scanner;
 public class Main {
 
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int c = sc.nextInt();
+		
+		sc.close();
+		
+		System.out.println((a + b) % c);
+		System.out.println((a % c + b % c) % c);
+		System.out.println((a * b) % c);
+		System.out.println((a % c * b % c) % c);
+	}
 }
