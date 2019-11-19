@@ -29,11 +29,23 @@ public class Main {
 		int a = sc.nextInt();
 		int b = sc.nextInt();
 		
-		if(b - 45 < 0) {
-			a = a - 1;
-			b = 60 + b - 45;
+		b -= 45;
+		if(b < 0) {
+			if(a != 0) {
+				a -= 1;
+				b += 60;
+			} else {
+				a = 23;
+				b += 60;
+			}
 		}
-		
+		if(a > 23) {
+			a = 0;
+			b = 15 + b; 
+		}
+		if(b > 59) {
+			System.out.println("error");
+		}
 		sc.close();
 		
 		System.out.print(a + " " + b);
