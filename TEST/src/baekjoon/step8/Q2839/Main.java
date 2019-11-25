@@ -21,10 +21,10 @@ public class Main {
 		int n = sc.nextInt();
 		sc.close();
 
-		if (n % 5 == 0) {
+		if (n % 5 == 0) {	// 5a일 경우
 			System.out.println(n / 5);
 			return;
-		} else {
+		} else {	// 5a + 3b일 경우
 
 			int n2 = n / 5;
 			for (int i = n2; i > 0; i--) {
@@ -36,7 +36,7 @@ public class Main {
 			}
 		}
 
-		if (n % 3 == 0) {
+		if (n % 3 == 0) {	// 3b일 경우
 			System.out.println(n / 3);
 		} else {
 			System.out.println(-1);
