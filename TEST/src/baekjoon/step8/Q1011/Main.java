@@ -30,12 +30,86 @@
 */
 package baekjoon.step8.Q1011;
 
-public class Main {
+import java.io.*;
+import java.util.StringTokenizer;
 
+public class Main {
+	
+	public static void main(String[] args) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int T = Integer.parseInt(st.nextToken());
+        for(int i = 0; i < T; i++) {
+        	
+            st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            	//if(x >= 0 && x < y && y < 231) {
+		            int mCnt = 0;
+		            int xCnt = 0;
+		            int yCnt = 0;
+		            
+		            while(true) {
+		            	mCnt++;
+		                
+		                x += mCnt;
+		                xCnt++; 
+		                
+		                if(x >= y) 
+		                    break;
+		                
+		                y -= mCnt;
+		                yCnt++; 
+		                
+		                if(y <= x) 
+		                    break;
+		            }
+		            
+		            bw.write(String.valueOf(xCnt + yCnt));
+		            bw.newLine();
+            	//} else {
+            		//System.out.println("입력값의 범위를 벗어났습니다.");
+            	//}
+            
+        }
+        bw.flush();
+    }
+	/* ㅈ망
 	public static void main(String[] args) {
 		
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
 		
-
-	}
+		int mCnt = 0;
+        int xCnt = 0;
+        int yCnt = 0;
+        
+		for(int i = 0; i < T; i++) {
+			
+			int x = sc.nextInt();
+			int y = sc.nextInt();
+            
+            while(true) {
+            	mCnt++;
+                
+                x += mCnt;
+                xCnt++; 
+                
+                if(x >= y) 
+                    break;
+                
+                y -= mCnt;
+                yCnt++; 
+                
+                if(y <= x) 
+                    break;
+            }
+            System.out.println(xCnt + yCnt);
+		}
+		  
+	}*/
 
 }
