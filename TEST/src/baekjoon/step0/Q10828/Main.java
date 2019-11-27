@@ -79,7 +79,7 @@ public class Main {
 			
 			if(input.equals("push")) {
 				top++;
-				arr[top] = sc.nextInt();
+				arr[top] = sc.nextInt();	// nextInt라 split해서 가져올 필요는 x
 			} else if(input.equals("pop")) {
 				if(top == -1) {
 					System.out.println("-1");
