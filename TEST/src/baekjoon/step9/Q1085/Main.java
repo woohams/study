@@ -9,12 +9,58 @@
 */
 package baekjoon.step9.Q1085;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
+		/*
+		Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int w = sc.nextInt();
+        int h = sc.nextInt();
+        sc.close();
+        
+        if (w >= h) {
+            if (y > h / 2)
+                System.out.println(h - y);
+            else if (y == h/2)
+                System.out.println(h / 2);
+            else
+                System.out.println(y);
+        } else {
+            if (x >= w / 2)
+                System.out.println(w - x);
+            else if (x == w / 2)
+                System.out.println(w / 2);
+            else
+                System.out.println(x);
+        }
+*/
+		Scanner sc = new Scanner(System.in);
 		
-		
-		
+        int min;
+        int len[] = new int[4];
+
+        for (int i = 0; i < len.length; i++) {
+            len[i] = sc.nextInt();
+        }
+        sc.close();
+        
+        len[2] -= len[0];
+        len[3] -= len[1];
+
+        min = len[0];
+
+        for (int i = 1; i < len.length; i++) {
+            if (len[i] < min) {
+                min = len[i];
+            }
+        }
+        
+        System.out.println(min);
+    
 	}
 
 }
