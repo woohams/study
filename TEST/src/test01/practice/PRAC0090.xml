@@ -1,0 +1,466 @@
+<?xml-stylesheet href="/common/css/comStyle.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:ev="http://www.w3.org/2001/xml-events"
+	  xmlns:w2="http://www.inswave.com/websquare" 
+	  xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dtlTM_LOGINX" baseNode="list" style="" saveRemovedData="true" repeatNode="map" valueAttribute=""
+					rowNumData="">
+					<w2:columnInfo>
+						<w2:column id="LGIN_DATE" name="로그인일시" dataType="text"></w2:column>
+						<w2:column id="LGIN_TIME" name="로그인일시" dataType="text"></w2:column>
+						<w2:column id="USER_IDXX" name="사용자ID" dataType="text"></w2:column>
+						<w2:column id="EMPL_NUMB" name="사원번호" dataType="text"></w2:column>
+						<w2:column id="EMPL_NAME" name="성명" dataType="text"></w2:column>
+						<w2:column id="DEPT_NAME" name="부서명" dataType="text"></w2:column>
+						<w2:column id="LGIN_IPAR" name="로그인IP주소" dataType="text"></w2:column>
+						<w2:column id="LGOT_DATE" name="로그아웃일" dataType="text"></w2:column>
+						<w2:column id="LGOT_TIME" name="로그아웃시간" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+				<w2:dataMap baseNode="map" id="dtmSEARCH00" style="">
+					<w2:keyInfo>
+						<w2:key id="STDS_DATE1" name="조회기간(시작일)" dataType="text"></w2:key>
+						<w2:key id="STDS_DATE2" name="조회기간(종료일)" dataType="text"></w2:key>
+						<w2:key id="EMPL_NUMB" name="사원" dataType="text"></w2:key>
+					</w2:keyInfo>
+				</w2:dataMap>
+			</w2:dataCollection>
+		</xf:model>
+		<script type="javascript" lazy="false"><![CDATA[
+/***************************************************************************************************
+*                                    초기화 부분                                     			   *
+***************************************************************************************************/
+/*-----------------------------------+
+|  01.화면변수 선언  |
++------------------------------------*/
+scwin.globalVal = {
+	sBUTTONLIST : 'TFFFFTT'		//공통기능정의(조회,추가,삭제,저장,인쇄,엑셀,종료)
+};
+    
+/*-----------------------------------+
+|  02.최초 화면 Load時 처리 할 사항  |
+	@parameter : 
+	@return :
++------------------------------------*/  
+scwin.onpageload = function() {
+	//초기화 및 권한체크
+	comLib.FormLoadSetting();
+
+	//코드 바인딩
+	
+	//초기값 세팅
+	ipcSHRSTDS_DATE1.setValue(dateLib.CurrentDate("yyyyMMdd"));
+	ipcSHRSTDS_DATE2.setValue(dateLib.CurrentDate("yyyyMMdd"));      			
+	//그룹초기화
+	       		
+	//검색조건 포커스	           	
+	ipcSHRSTDS_DATE1.focus();
+	
+	//검색
+  	scwin.getCommonSearch();
+};  
+
+/***************************************************************************************************
+*                                   공통버튼 Event 처리 부분                          			   *
+***************************************************************************************************/		  		
+/*-----------------------------------+
+|  03.조회 버튼 클릭 時  |
+	@parameter : rtnValue (콜백요청시 true/false)
+	@return :
++------------------------------------*/        
+scwin.getCommonSearch = function (rtnValue) {
+     		
+	if(rtnValue == false) return;
+     		
+	//변경여부 체크
+	if (valLib.checkModified([dtlTM_LOGINX]) && rtnValue != true) {
+
+		comLib.Message("TMM006",true, "getCommonSearch");
+	
+	} else {
+		//필수조회조건체크
+		if (!scwin.checkSearchItem()) return;
+		
+		scwin.setSubmitArg("SEARCH00");
+	}
+     		
+};
+     	
+/*-----------------------------------+
+|  04.입력 버튼 클릭 時  |		
+	@parameter : 
+	@return :
++------------------------------------*/        
+scwin.setCommonInput = function () {
+	//사용안함
+};
+     	
+/*-----------------------------------+
+|  05.삭제 버튼 클릭 時  |		
+	@parameter : rtnValue (콜백요청시 true/false)
+	@return :
++------------------------------------*/
+scwin.setCommonDelete = function (rtnValue) {
+	//사용안함
+};		
+     	
+/*-----------------------------------+
+|  06.저장 버튼 클릭 時  |		
+	@parameter : 
+	@return :
++------------------------------------*/
+scwin.setCommonSave = function () {
+	//사용안함
+};
+   		     	
+/*-----------------------------------+
+|  07.인쇄 버튼 클릭 時  |		
+	@parameter : 
+	@return :
++------------------------------------*/
+scwin.getCommonPrint = function () {
+	//사용안함
+};
+
+/***************************************************************************************************
+*                                   공통 Event/Function 처리 부분                          		   *
+***************************************************************************************************/   	
+/*-----------------------------------+
+|  08.서브미션 호출 시 넘어 갈 Argument 생성 및 서브미션 호출  |		
+	@parameter : sMethodName(Task함수명)
+	@return :
++------------------------------------*/     	
+scwin.setSubmitArg = function (sMethodName) {				
+	
+	var option;
+	
+	switch (sMethodName) {
+	 
+		case 'SEARCH00' :
+
+			option = { 
+				  id : sMethodName
+				, action : "/PRAC0090/SEARCH00.do"
+				, ref : "data:json, {'id':'dtmSEARCH00', 'key':'param'}"
+				, target : "data:json, {'id':'dtlTM_LOGINX', 'key':'data'}"
+				, submitDoneHandler : "setPostProcess" 
+			};
+			break;
+			
+       	default :
+       		break;
+       		
+	}
+	 			
+	ajaxLib.executeSubmission(option);		
+};
+
+/*-----------------------------------+
+|  09.서브미션 Transaction 후 Post Process  |		
+	@parameter : sMethodName(Task함수명), e(서브미션 호출 후 리턴 Doc)
+	@return :
++------------------------------------*/
+scwin.setPostProcess = function (sMethodName,e) {
+	
+	if(ajaxLib.IsWarning(e)) {
+		return;					
+	}
+	
+	switch (sMethodName) {
+	 
+		case 'SEARCH00' :			
+
+			grdTM_LOGINX.setFocusedCell(0, 0);
+			comLib.Information(optInformation, e, "S");	
+			
+			break;
+		
+       	default :
+       		break;
+       		
+	} 	
+
+}; 	
+
+/*-----------------------------------+
+|  10.공통팝업 오픈  |		
+	@parameter : obj(그리드 또는 컨트롤), sFromGrd(그리드 onChange 에서 호출할 경우 true) 
+	@return :
++------------------------------------*/
+scwin.openHelpDialog = function (obj, sFromGrd, colID) {			
+	
+	if(typeof obj == "object") {
+		obj = this;
+	};
+	
+	var param = new Array();  
+	var arrParam = new Array();
+	
+	if (obj.org_id == "imgHelpSHREMPL_NUMB" || obj.org_id == "iptSHREMPL_NAME") {
+		
+		if(iptSHREMPL_NAME.getReadOnly()) return;			
+		//사원번호 (조회조건)
+		param[0] = new Array("EMPL_NUMB", iptSHREMPL_NAME.getValue());
+		param[1] = new Array("WODN_CODE", "1");	//1:재직자,2:퇴직자, 0:전체사원
+		param[2] = new Array("READ_FLAG", "FFF");	//ReadOnly처리(법인,거래처,운영현장) [T:True, F:False]
+		
+		arrParam[0] = "HRM0003";                			//Popup ID				
+		arrParam[1] = param;                  				//parameter					
+		arrParam[2] = "iptSHREMPL_NUMB,iptSHREMPL_NAME";  	//초기화 및 결과 Mapping Column
+		arrParam[3] = "EMPL_NUMB,EMPL_NAME";           	 	//Mapping Column
+		comLib.HelpDialog(obj, arrParam);
+	
+	}
+	
+};
+
+/*-----------------------------------+
+|  11.그리드 row 변경 이벤트			 |
+	@parameter : row, oldRow, rtnValue
+	@return :
++------------------------------------*/
+scwin.changeRowIndex = function(row, oldRow, rtnValue) {
+	//사용안함
+};
+
+/*-----------------------------------+
+|  12.그리드 onChange 이벤트   |
+	@parameter : info.rowIndex, info.colIndex, info.newValue, info.oldValue
+	@return :
++------------------------------------*/
+scwin.changeGridView = function(info) {
+	//사용안함
+};
+
+/*-----------------------------------+
+|  13.데이터리스트 onChange 처리   |
+	@parameter : info.rowIndex, info.colID, info.oldValue, info.newValue
+	@return : 
++------------------------------------*/
+scwin.changeDatalist = function(info) {
+	//사용안함
+};
+	 	
+/*-----------------------------------+
+|  14.화면 닫기 전 체크   |		
+	@parameter : 
+	@return :bool
++------------------------------------*/
+scwin.checkFormUnload = function () {
+	comLib.CheckFormUnload([dtlTM_LOGINX]);
+};
+     	
+/*-----------------------------------+
+|  15.조회 필수 조건 체크   |		
+	@parameter : 
+	@return :bool
++------------------------------------*/		
+scwin.checkSearchItem = function () {
+
+	if (!dateLib.CheckPeriod(ipcSHRSTDS_DATE1, ipcSHRSTDS_DATE2, "[조회기간 시작일]", "[조회기간 종료일]", "0")) {
+		return false;
+	}
+
+ 	return valLib.validateGroup(grpSearchArea);
+ 	
+};
+
+/*-----------------------------------+
+|  16.삭제 여부 체크   |		
+	@parameter : 
+	@return :bool
++------------------------------------*/
+scwin.checkDelete = function () {	
+	//사용안함
+};
+
+/*-----------------------------------+
+|  17.저장 여부 체크   |		
+	@parameter : 
+	@return :bool
++------------------------------------*/		
+scwin.checkSaveItem = function () {
+	//사용안함
+};
+
+/***************************************************************************************************
+*                                   사용자정의 Event/Function 처리 부분                        	   *
+***************************************************************************************************/
+
+/***************************************************************************************************
+*                                   컴포넌트 동적 Event 처리 부분                       		   *
+***************************************************************************************************/
+
+]]></script>
+		<w2:migration value="true" />
+		<w2:require src="/ws/cmm/lib/udc/gridToolMenu.xml"></w2:require>
+	</head>
+	<body ev:onpageload="scwin.onpageload" style="width:1818px;height:829px;">
+		<xf:group id="grpScreen" style="" class="grp_WF_frame">
+			<xf:group style="" id="" class="grp_WF_header">
+				<w2:wframe class="wfr_WF_title" id="wfrTitle" src="/ws/cmm/lib/comtitle.xml" style="" ></w2:wframe>
+			</xf:group>
+			<xf:group style="" id="" class="grp_WF_contents">
+				
+			<xf:group style="" id="" class="grp_WF_contents_inner">
+					<xf:group class="grp_WF_button" id="grpButtonArea" style="">
+						<xf:group class="grp_WF_userBtn" id="" style=""></xf:group>
+						<w2:wframe class="wfr_WF_comBtn" id="wfrButtonList" src="/ws/cmm/lib/combutton.xml" style=""></w2:wframe>
+					</xf:group>
+					<xf:group class="grp_WF_search line1" id="grpSearchArea" style="">
+						<xf:group class="tbl_WFSA_layout" id="" style="" tagname="table">
+							<w2:attributes>
+								<w2:summary></w2:summary>
+							</w2:attributes>
+							<xf:group tagname="caption"></xf:group>
+							<xf:group tagname="colgroup">
+								<xf:group style="" tagname="col"></xf:group>
+								<xf:group style="width:230px;" tagname="col"></xf:group>
+								<xf:group style="" tagname="col"></xf:group>
+								<xf:group style="width:200px;" tagname="col"></xf:group>
+							</xf:group>
+							<xf:group class="" id="" style="" tagname="tbody">
+								<xf:group style="" tagname="tr">
+									<xf:group class="" tagname="th">
+										<w2:attributes></w2:attributes>
+										<w2:textbox class="" for="ipcSHRSTDS_DATE1" id="txtSHRSTDS_DATE" label="조회기간" style=""></w2:textbox>
+									</xf:group>
+									<xf:group class="" style="" tagname="td">
+										<xf:group style="" id="" class="grp_WF_cp">
+											<xf:group style="" id="" class="">
+												<w2:inputCalendar calendarValueType="yearMonthDate" delimiter="." ev:onviewchange="" id="ipcSHRSTDS_DATE1" mandatory="true" ref="data:dtmSEARCH00.STDS_DATE1" style="width:105px;height:23px;" class="req">
+												</w2:inputCalendar>
+											</xf:group>
+											<xf:group style="" id="" class="">
+												<xf:output id="" label="" style="text-align:center;width: 20px;">
+													<xf:label>~</xf:label>
+												</xf:output>
+											</xf:group>
+											<xf:group style="" id="" class="">
+												<w2:inputCalendar calendarValueType="yearMonthDate" delimiter="." ev:onviewchange="" id="ipcSHRSTDS_DATE2" mandatory="true" ref="data:dtmSEARCH00.STDS_DATE2" style="width:105px;height:23px;" class="req">
+												</w2:inputCalendar>
+											</xf:group>
+										</xf:group>
+									</xf:group>
+									<xf:group class="" tagname="th">
+										<w2:attributes></w2:attributes>
+										<w2:textbox class="" for="iptSHREMPL_NAME" id="txtSHREMPL_NUMB" label="사원" style=""></w2:textbox>
+									</xf:group>
+									<xf:group class="" tagname="td">
+										<w2:attributes></w2:attributes>
+										<xf:group class="grp_WF_cp" id="" style="">
+											<xf:group class="" id="" style="">
+												<xf:input adjustMaxLength="false" disabled="" id="iptSHREMPL_NUMB" readOnly="true" ref="data:dtmSEARCH00.EMPL_NUMB" style="width:60px;height:23px;text-align: center;">
+												</xf:input>
+											</xf:group>
+											<xf:group class="" id="" style="">
+												<xf:trigger class="btn_WF_helpPopup" ev:onclick="scwin.openHelpDialog" id="imgHelpSHREMPL_NUMB" style="position:relative;" type="button">
+													<xf:label></xf:label>
+												</xf:trigger>
+											</xf:group>
+											<xf:group class="" id="" style="width:100%;">
+												<xf:input adjustMaxLength="false" ev:onviewchange="scwin.openHelpDialog" id="iptSHREMPL_NAME" ref="" style="width:100%;height:23px;">
+												</xf:input>
+											</xf:group>
+										</xf:group>
+									</xf:group>
+								</xf:group>
+							</xf:group>
+						</xf:group>
+					</xf:group><xf:group style="" id="grpSearchAreaCtrl" class="grp_WFSA_ctrl">
+								<xf:trigger class="btn_WFSA_toggle redu" id="btnSearchAreaToggle" style="position:absolute;left:869px;margin-left:-36px;width:72px;height:17px;" type="button">
+									<xf:label></xf:label>
+								</xf:trigger>
+							</xf:group>
+					<xf:group class="grp_WF_body" id="grpWorkBody" style="">
+						<xf:group style="" id="" class="grp_WF_body_inner">
+							<xf:group style="position:absolute;top:0px;left:0px;right:0px;" id="" class="grp_WF_toolbar">
+								<xf:output label="" style="" id="" class="opt_WF_subTitle">
+									<xf:label><![CDATA[시스템접속로그]]></xf:label>
+								</xf:output>
+								<xf:output label="" style="" id="optInformation" class="opt_WF_rowCount">
+									<xf:label><![CDATA[[ 0건 ]]]></xf:label>
+								</xf:output>
+								<xf:group style="" id="" class="grp_WF_toolbarBtn"></xf:group>
+							</xf:group>
+						</xf:group>
+						<xf:group style="position:absolute;top:28px;left:0px;right:0px;bottom:0px;" id="" class="grpTM_LOGINX_grid">
+							<w2:gridView id="" style="position: absolute;top: 0px;left: 0px;right: 0px;bottom:0px;" scrollByColumn="false" defaultCellHeight="20"
+								scrollByColumnAdaptive="false" dataList="" class="grdTM_LOGINX">
+								<w2:header style="" id="header3">
+									<w2:row style="" id="">
+										<w2:column removeBorderStyle="" width="95" inputType="text" style="height:30px;" id="HD_LGIN_DATE"
+											value="Login 일자" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="80" inputType="text" style="height:30px;width: 80px;" id="HD_LGIN_TIME"
+											value="Login 시간" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="90" inputType="text" style="height:30px;" id="HD_USER_IDXX"
+											value="Login ID" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="90" inputType="text" style="height:30px;" id="HD_EMPL_NUMB"
+											value="사원번호" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="90" inputType="text" style="height:30px;" id="HD_EMPL_NAME"
+											value="성명" blockSelect="" displayMode="" voidNull="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="260" inputType="text" style="height:30px;" id="HD_DEPT_NAME"
+											value="부서" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="110" inputType="text" style="height:30px;" id="HD_LGIN_IPAR"
+											value="로그인 IP" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="95" inputType="text" style="height:30px;" id="HD_LGOT_DATE"
+											value="Logout 일자" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="80" inputType="text" style="height:30px;" id="HD_LGOT_TIME"
+											value="Logout 시간" blockSelect="" displayMode="" valueType="binary">
+										</w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody3">
+									<w2:row style="" id="row2">
+										<w2:column removeBorderStyle="false" width="95" inputType="text" style="height:28px;" id="LGIN_DATE"
+											value="" blockSelect="false" displayMode="" valueType="binary" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height: 28px;" id="LGIN_TIME"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height: 28px;" id="USER_IDXX"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height: 28px;" id="EMPL_NUMB"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height: 28px;" id="EMPL_NAME"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:28px;" id="DEPT_NAME"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:28px;" id="LGIN_IPAR"
+											value="" blockSelect="" displayMode="" calendarClass="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height: 28px;" id="LGOT_DATE"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+										<w2:column removeBorderStyle="false" width="70" inputType="text" style="height: 28px;" id="LGOT_TIME"
+											value="" blockSelect="" displayMode="" textAlign="center">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+						</xf:group>
+					</xf:group>
+			</xf:group></xf:group>
+		</xf:group>
+	</body>
+</html>
