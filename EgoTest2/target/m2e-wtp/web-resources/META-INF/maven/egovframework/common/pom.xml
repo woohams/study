@@ -482,15 +482,15 @@
 		
         <!-- 3rd party 라이브러리로 별도의 설치 필요 -->
         <!-- oracle 11g driver -->
-        <!-- 
+         
         <dependency>
             <groupId>ojdbc</groupId>
             <artifactId>ojdbc</artifactId>
             <version>6-11</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6-11.2.0.3.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
         </dependency>
-        -->
+        
         <!-- altibase driver -->
         <!--
         <dependency>
@@ -529,6 +529,7 @@
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/smeapi_2_7.jar</systemPath>
         </dependency>
+        
         <!-- GPKI인증서 로그인처리 라이브러리 -->         
         <dependency>
             <groupId>kr.go.gpki</groupId>
