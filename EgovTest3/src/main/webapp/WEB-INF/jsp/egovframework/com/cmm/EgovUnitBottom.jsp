@@ -8,11 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="<c:url value='/css/egovframework/com/cmm/main.css' />" rel="stylesheet" type="text/css">
-<title>eGovFrame 공통 컴포넌트</title>
+<title>eGovFrame footer</title>
 </head>
 <body>
 <div id="footer">
-	<div><strong class="footer_title_strong">Copyright(c)2018 eGovframework. All right reserved.</strong></div>
+	<div><strong class="footer_title_strong">COPYRIGHT &copy; 2019  〓 <span>진 우 현</span>〓 All rights reserved.</strong></div>
 </div>
 </body>
 </html>
