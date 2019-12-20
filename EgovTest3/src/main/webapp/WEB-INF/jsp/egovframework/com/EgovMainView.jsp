@@ -57,13 +57,6 @@ function chk_all(val) {
 				<c:import url="/cop/bbs/selectBlogListPortlet.do" />
 			</div>
 			
-			<!-- 기념일 -->
-			<h3 class="m_tit01 mt15"><spring:message code="comUssIonAns.annvrsryMainList.listTitle"/></h3>
-			<div style="height:100px;">
-				<c:import charEncoding="utf-8" url="/uss/ion/ans//uss/ion/ans/selectAnnvrsryGdcc.do" />
-				<input type="hidden" name="annId"       value=""/>
-			</div>
-			
 		</div>
 		
 		<div class="r"><!-- right layout -->
