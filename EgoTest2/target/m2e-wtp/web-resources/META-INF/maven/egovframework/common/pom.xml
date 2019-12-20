@@ -47,7 +47,7 @@
         <!-- 실행환경 라이브러리 -->
         <!--
         mybatis를 사용하는 데 jdk1.5로 컴파일 할 경우 아래와 같이 변경해 주시기 바랍니다.
-        (3.2.X 버전에서 부터 jdk1.6으로 컴파일 되어 발생하는 현상)
+        (3.2.X 버전에서 부터 jdk1.6으로 컴파일 되어 발생하는 현상)-->
           <dependency>
            <groupId>egovframework.rte</groupId>
            <artifactId>egovframework.rte.psl.dataaccess</artifactId>
@@ -64,7 +64,7 @@
            <artifactId>mybatis</artifactId>
            <version>3.1.1</version>
           </dependency>
-        -->
+
         <dependency>
             <groupId>egovframework.rte</groupId>
             <artifactId>egovframework.rte.fdl.idgnr</artifactId>
