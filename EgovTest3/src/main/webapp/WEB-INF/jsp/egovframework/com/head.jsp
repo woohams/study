@@ -5,6 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page import="egovframework.com.cmm.util.EgovUserDetailsHelper" %>
 <script language="text/javascript" src="<c:url value='/js/egovframework/com/main.js' />"></script>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/com/main_portal.css' />">
 <script type="text/javascript">
 	function fn_main_headPageMove(menuNo, url){

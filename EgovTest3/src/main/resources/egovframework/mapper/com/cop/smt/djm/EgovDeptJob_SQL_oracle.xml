@@ -88,15 +88,16 @@
 				COMTNEMPLYRINFO a
 			LEFT OUTER JOIN COMTNORGNZTINFO b
 				ON a.ORGNZT_ID = b.ORGNZT_ID
-			WHERE 1=1
-		
-			<if test='searchCnd == "0"'>AND
-					NVL(b.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
-			</if>
-			<if test='searchCnd == "1"'>AND
-					NVL(a.USER_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
-			</if>
-		
+
+			<where>
+				<if test='searchCnd == "0"'>AND
+						NVL(b.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
+				</if>
+				<if test='searchCnd == "1"'>AND
+						NVL(a.USER_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
+				</if>
+			</where>
+					
 			ORDER BY b.ORGNZT_NM, a.USER_NM ASC
 			
 	
@@ -115,14 +116,14 @@
 				COMTNEMPLYRINFO a
 			LEFT OUTER JOIN COMTNORGNZTINFO b
 				ON a.ORGNZT_ID = b.ORGNZT_ID
-			WHERE 1=1
-		
-			<if test='searchCnd == "0"'>AND
-					NVL(b.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
-			</if>
-			<if test='searchCnd == "1"'>AND
-					NVL(a.USER_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
-			</if>		
+			<where>
+				<if test='searchCnd == "0"'>AND
+						NVL(b.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
+				</if>
+				<if test='searchCnd == "1"'>AND
+						NVL(a.USER_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
+				</if>		
+			</where>
 	</select>
 	
 	<!-- 부서::목록조회 -->
@@ -140,15 +141,14 @@
 			ORGNZT_NM,
 			ORGNZT_DC 
 		FROM COMTNORGNZTINFO
-		WHERE 1=1
-	 
+	<where>
 	 <if test='searchCnd == "0"'>AND
 		 	ORGNZT_NM LIKE '%'||#{searchWrd}||'%' 		
 	 </if>
 	 <if test='searchCnd == "1"'>AND
 		 	ORGNZT_DC LIKE '%'||#{searchWrd}||'%' 		
 	 </if>
-	 
+	</where>	 
 		ORDER BY ORGNZT_NM ASC
 	 
 	 
@@ -166,14 +166,15 @@
 				COUNT(ORGNZT_ID) as cnt
 			FROM
 				COMTNORGNZTINFO 
-			WHERE 1=1
-		
-			<if test='searchCnd == "0"'>AND
-					ORGNZT_NM LIKE '%'||#{searchWrd}||'%' 		
-			</if>
-			<if test='searchCnd == "1"'>AND
-					ORGNZT_DC LIKE '%'||#{searchWrd}||'%' 		
-			</if>		
+
+			<where>
+				<if test='searchCnd == "0"'>AND
+						ORGNZT_NM LIKE '%'||#{searchWrd}||'%' 		
+				</if>
+				<if test='searchCnd == "1"'>AND
+						ORGNZT_DC LIKE '%'||#{searchWrd}||'%' 		
+				</if>		
+			</where>
 	</select>
 	
 	<!-- 부서::조회 -->
@@ -224,20 +225,19 @@
 			ON A.DEPT_ID = B.ORGNZT_ID 
 		LEFT OUTER JOIN COMTNEMPLYRINFO C
 			ON A.LAST_UPDUSR_ID = C.ESNTL_ID 
-		WHERE 1=1
-	 
-	 <if test='popupCnd != null and popupCnd != ""'>
-		 <if test='deptId != null and deptId != ""'>AND
-			 A.DEPT_ID = #{deptId}
+		<where>
+		 <if test='popupCnd != null and popupCnd != ""'>
+			 <if test='deptId != null and deptId != ""'>AND
+				 A.DEPT_ID = #{deptId}
+			 </if>
 		 </if>
-	 </if>
-	 <if test='searchCnd == "0"'>AND
-		 	NVL(B.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
-	 </if>
-	 <if test='searchCnd == "1"'>AND
-		 	A.DEPT_JOBBX_NM LIKE '%'||#{searchWrd}||'%' 		
-	 </if>
-	 
+		 <if test='searchCnd == "0"'>AND
+			 	NVL(B.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
+		 </if>
+		 <if test='searchCnd == "1"'>AND
+			 	A.DEPT_JOBBX_NM LIKE '%'||#{searchWrd}||'%' 		
+		 </if>
+		</where>	 
 		ORDER BY B.ORGNZT_NM, A.INDICT_ORDR ASC
 	 
 	
@@ -257,19 +257,19 @@
 				COMTNDEPTJOBBX A
 			LEFT OUTER JOIN COMTNORGNZTINFO B
 				ON A.DEPT_ID = B.ORGNZT_ID 
-			WHERE 1=1
-		
-		<if test='popupCnd != null and popupCnd != ""'>
-		 <if test='deptId != null and deptId != ""'>AND
-			 A.DEPT_ID = #{deptId}
-		 </if>
-	 	</if>
-		<if test='searchCnd == "0"'>AND
-		 		NVL(B.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
-	 	</if>
-		<if test='searchCnd == "1"'>AND
-				A.DEPT_JOBBX_NM LIKE '%'||#{searchWrd}||'%' 		
-		</if>	
+		<where>
+			<if test='popupCnd != null and popupCnd != ""'>
+			 <if test='deptId != null and deptId != ""'>AND
+				 A.DEPT_ID = #{deptId}
+			 </if>
+		 	</if>
+			<if test='searchCnd == "0"'>AND
+			 		NVL(B.ORGNZT_NM, ' ') LIKE '%'||#{searchWrd}||'%' 		
+		 	</if>
+			<if test='searchCnd == "1"'>AND
+					A.DEPT_JOBBX_NM LIKE '%'||#{searchWrd}||'%' 		
+			</if>	
+		</where>
 	</select>
 	
 	<!-- 부서업무함::상세보기 -->

@@ -2,25 +2,56 @@
 <Configuration>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %5p [%c] %m%n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p (%F:%L) - %m%n" />
         </Console>
+        <File name="debug" fileName="C:/java_Project/logs/EgovTest3/debug.log" append="false">
+		   <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%F:%L] - %m%n"/>
+		</File>
+		<File name="sql" fileName="C:/java_Project/logs/EgovTest3/sql.log" append="false">
+		   <PatternLayout/>
+		</File>
+		<File name="error" fileName="C:/java_Project/logs/EgovTest3/error.log" append="false">
+		   <PatternLayout/>
+		</File>
     </Appenders>
     <Loggers>
+    
+    	<!-- attribute: name(Logger명), level(Log Level), additivity(중복로깅여부, true or false) -->
+  		<!-- element: AppenderRef(Appender명) -->
         <Logger name="java.sql" level="INFO" additivity="false">
             <AppenderRef ref="console" />
+            <AppenderRef ref="sql" />
         </Logger>
         <Logger name="egovframework" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
+            <AppenderRef ref="debug" />
         </Logger>
 		  <!-- log SQL with timing information, post execution -->
 	    <Logger name="jdbc.sqltiming" level="INFO" additivity="false">
 	        <AppenderRef ref="console" />
+	        <AppenderRef ref="sql" />
 	    </Logger>
-	    <Logger name="org.springframework" level="INFO" additivity="false">
+	    <Logger name="org.springframework" level="ERROR" additivity="false">
 	        <AppenderRef ref="console" />
+	        <AppenderRef ref="debug" />
 	    </Logger>
+	    
+        <!--  
+        <Logger name="java.sql.Connection" level="DEBUG" additivity="false">
+        	<AppenderRef ref="console" />
+        </Logger>
+        <Logger name="java.sql.PreparedStatement" level="DEBUG" additivity="false">
+        	<AppenderRef ref="console" />
+        </Logger>
+        <Logger name="java.sql.Statement" level="DEBUG" additivity="false">
+        	<AppenderRef ref="console" />
+        </Logger>
+        -->
+        <!--  -->
         <Root level="ERROR">
             <AppenderRef ref="console" />
+            <AppenderRef ref="error" />
         </Root>
+        
     </Loggers>
 </Configuration>

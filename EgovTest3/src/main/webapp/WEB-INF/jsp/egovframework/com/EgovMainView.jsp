@@ -7,6 +7,7 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <title><spring:message code="comSymMnuMpm.mainView.mainViewTitle"/></title><!-- 행정안전부 공통서비스 테스트 사이트 -->
 <script language="javascript" src="<c:url value='/js/egovframework/com/main.js' />"></script>
 <script language="javascript">
@@ -55,19 +56,27 @@ function chk_all(val) {
 			<div style="height:181px">
 				<c:import url="/cop/bbs/selectBlogListPortlet.do" />
 			</div>
+			
+			<!-- 기념일 -->
+			<h3 class="m_tit01 mt15"><spring:message code="comUssIonAns.annvrsryMainList.listTitle"/></h3>
+			<div style="height:100px;">
+				<c:import charEncoding="utf-8" url="/uss/ion/ans//uss/ion/ans/selectAnnvrsryGdcc.do" />
+				<input type="hidden" name="annId"       value=""/>
+			</div>
+			
 		</div>
 		
 		<div class="r"><!-- right layout -->
 			<!-- 부서일정관리  -->
 			<h3 class="m_tit01 mt15"><spring:message code="comSymMnuMpm.mainView.deptSchdulManageMainList"/></h3><!-- 부서일정관리 -->
 			<div style="height:150px">
-			<c:import charEncoding="utf-8" url="/cop/smt/sdm/EgovDeptSchdulManageMainList.do" ></c:import>
+				<c:import charEncoding="utf-8" url="/cop/smt/sdm/EgovDeptSchdulManageMainList.do" ></c:import>
 			</div>
 			
 			<!-- 나의일정관리 -->
 			<h3 class="m_tit01 mt15"><spring:message code="comSymMnuMpm.mainView.indvdlSchdulManageMainList"/></h3><!-- 나의일정관리 -->
 			<div style="height:150px">
-			<c:import charEncoding="utf-8" url="/cop/smt/sim/EgovIndvdlSchdulManageMainList.do" ></c:import>
+				<c:import charEncoding="utf-8" url="/cop/smt/sim/EgovIndvdlSchdulManageMainList.do" ></c:import>
 			</div>
 			
 			<h3 class="m_tit01 mt15"><spring:message code="comSymMnuMpm.mainView.exchangeRateInformation"/></h3><!-- 환율정보 -->
