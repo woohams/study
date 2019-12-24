@@ -7,7 +7,6 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="icon" href="favicon.ico" type="image/x-icon">
 <title><spring:message code="comSymMnuMpm.mainView.mainViewTitle"/></title><!-- 행정안전부 공통서비스 테스트 사이트 -->
 <script language="javascript" src="<c:url value='/js/egovframework/com/main.js' />"></script>
 <script language="javascript">

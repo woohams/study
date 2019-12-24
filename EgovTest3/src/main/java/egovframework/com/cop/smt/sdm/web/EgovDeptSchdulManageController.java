@@ -271,7 +271,7 @@ public class EgovDeptSchdulManageController {
 
 		String strYear = (String)commandMap.get("year");
 		String strMonth = (String)commandMap.get("month");
-		String strDay =( String)commandMap.get("day");
+		String strDay = (String)commandMap.get("day");
 		String strSearchDay = "";
 		int iNowYear = calNow.get(Calendar.YEAR);
 		int iNowMonth = calNow.get(Calendar.MONTH);
