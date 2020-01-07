@@ -76,7 +76,8 @@ public class test04 {
 		int num1 = sc.nextInt();
 		int num2 = sc.nextInt();
 		char op = sc.next().charAt(0);
-
+		sc.close();
+		
 		switch (op) {
 		case '+':
 			Add add = new Add();

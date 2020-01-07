@@ -20,6 +20,7 @@ public class test06 {
         
         System.out.print("알파벳을 입력하세요. >> ");
         char c = sc.next().charAt(0);
+        sc.close();
         System.out.println(Integer.valueOf(c));
     }
 
