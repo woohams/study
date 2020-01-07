@@ -26,7 +26,7 @@ public class test01 {
 				break;
 			}
 		} 
-		
+		sc.close();
 		System.out.println("앙 기모링");
 		
 	}

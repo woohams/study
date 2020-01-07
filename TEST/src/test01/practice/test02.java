@@ -32,7 +32,7 @@ public class test02 {
         
         Player[] play = new Player[number];
         
-        for(int i=0; i<number; i++) {
+        for(int i = 0; i < number; i++) {
             System.out.println("참가자의 이름을 입력하세요 >> ");
             play[i] = new Player();
             play[i].name = sc.next();
@@ -43,7 +43,7 @@ public class test02 {
         int j = 0;
         while(true) {
             j = i % number; 
-            int lastIndex = word.length()-1;
+            int lastIndex = word.length() - 1;
             char lastChar = word.charAt(lastIndex); 
             
             System.out.println(play[j].name + " >> ");
