@@ -23,15 +23,15 @@ public class Main {
         ArrayList<String> arr = new ArrayList<>();
          
         while (sc.hasNextLine()) {
-            String input = sc.nextLine();
-            if (input == null || input.isEmpty()) {
+            String s = sc.nextLine();
+            if (s == null || s.isEmpty()) {
                 break;
             }
-            arr.add(input);
+            arr.add(s);
         }
         sc.close();
  
-        for (int i = 0; i < arr.size(); ++i) {
+        for (int i = 0; i < arr.size(); ++i) {	
             System.out.println(arr.get(i));
         }
 		/*
